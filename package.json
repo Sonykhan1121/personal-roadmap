@@ -9,7 +9,7 @@
     "dev": "vinext dev",
     "build": "tsc --noEmit && vite build --config vite.pages.config.ts && node scripts/verify-pages.mjs",
     "test": "node --experimental-strip-types --test tests/progress.test.mjs",
-    "start": "wrangler dev --config dist/server/wrangler.json",
+    "start": "vite preview --config vite.pages.config.ts --host 127.0.0.1",
     "lint": "oxlint",
     "format": "oxfmt"
   },

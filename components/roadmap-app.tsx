@@ -627,7 +627,7 @@ export default function Home() {
                 <SheetTitle>{selected.title}</SheetTitle>
                 <SheetDescription>{selected.summary}</SheetDescription>
               </SheetHeader>
-              <div className="sheet-body">
+              <fieldset className="sheet-body" disabled={saving} aria-label="Topic progress and notes">
                 <h3>My progress</h3>
                 <RadioGroup
                   value={draft.status}
@@ -729,7 +729,7 @@ export default function Home() {
                   Appears in your review list on this date. No email
                   notification.
                 </p>
-              </div>
+              </fieldset>
               <div className="sheet-save">
                 <output
                   className={
