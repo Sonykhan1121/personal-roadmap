@@ -12,6 +12,7 @@ Cloud sign-in and private progress storage use the owner's Supabase Free project
 - 54 study guides, including the supplied Dart lessons with formatted code examples and reference tables.
 - A single stage selector and numbered topic list, with a next-topic action and optional stage details.
 - Separate Learn, Practice, and My notes tabs keep official resources, study guides, checklists, and private notes easy to navigate.
+- Drag the topic drawer’s left edge to resize it on desktop; arrow keys also work, and double-click restores the default width. The width is remembered in this browser, with a full-width layout on phones.
 - Completion filters, review reminders, time estimates, and completion criteria remain available.
 - Learning, practicing, completed, and skipped states; private notes, evidence links, and review dates.
 - Email-link sign-in and PostgreSQL storage through Supabase, with per-user row-level access rules.

@@ -564,10 +564,54 @@ select {
   top: 12px;
 }
 .topic-sheet {
-  width: min(100%, 680px) !important;
-  max-width: 680px !important;
+  width: min(100%, var(--topic-drawer-width, 680px)) !important;
+  max-width: none !important;
   gap: 0;
   font-size: 16px;
+}
+.drawer-resize-handle {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 12px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+}
+.drawer-resize-handle > span {
+  width: 4px;
+  height: 48px;
+  border-radius: 4px;
+  background: #b7c7c1;
+}
+.drawer-resize-handle:hover,
+.drawer-resize-handle:focus-visible,
+.drawer-resize-handle:active {
+  background: #edf7f2;
+}
+.drawer-resize-handle:hover > span,
+.drawer-resize-handle:focus-visible > span,
+.drawer-resize-handle:active > span {
+  background: var(--primary);
+}
+.drawer-resize-handle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+body:has(.drawer-resize-handle:active) * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+@media (max-width: 640px) {
+  .topic-sheet {
+    width: 100% !important;
+  }
+  .drawer-resize-handle {
+    display: none;
+  }
 }
 .topic-sheet [data-slot='sheet-header'] {
   flex-shrink: 0;

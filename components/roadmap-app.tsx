@@ -18,7 +18,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import {
   Sheet,
-  SheetContent,
   SheetHeader,
   SheetTitle,
   SheetDescription,
@@ -39,6 +38,7 @@ import {
 import { AuthDialog } from '@/components/auth-dialog';
 import { ScheduleDialog } from '@/components/schedule-dialog';
 import { StudyGuide } from '@/components/study-guide';
+import { ResizableTopicSheet } from '@/components/resizable-topic-sheet';
 import { isCloudConfigured } from '@/lib/supabase';
 import { phases, topics } from '@/lib/roadmap';
 import {
@@ -471,7 +471,7 @@ export default function Home() {
           if (!open) closeTopic();
         }}
       >
-        <SheetContent className="topic-sheet">
+        <ResizableTopicSheet open={!!selected}>
           {selected && (
             <>
               <SheetHeader>
@@ -658,7 +658,7 @@ export default function Home() {
               </div>
             </>
           )}
-        </SheetContent>
+        </ResizableTopicSheet>
       </Sheet>
       <AuthDialog open={authOpen && !user} onOpenChange={setAuthOpen} />
       {scheduleOpen && (
