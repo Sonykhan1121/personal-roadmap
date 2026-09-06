@@ -4,24 +4,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Check,
   ChevronRight,
-  Clock3,
   Cloud,
   CloudOff,
-  Code2,
-  Compass,
-  Flag,
   GitBranch,
-  Layers3,
   LoaderCircle,
-  Minus,
   RefreshCw,
   Save,
   Settings2,
-  Sparkles,
-  Target,
 } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
@@ -77,6 +68,7 @@ export default function Home() {
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [discardOpen, setDiscardOpen] = useState(false);
   const [filter, setFilter] = useState('all');
+  const [detailTab, setDetailTab] = useState('learn');
   const previousUser = useRef<string | null>(null);
   const selected = topics.find((t) => t.id === selectedId);
   const selectedPhase = phases.find((p) => p.id === selected?.phase);
@@ -85,11 +77,25 @@ export default function Home() {
     topics.map((t) => t.id),
     entries,
   );
+  const phase = phases.find((p) => p.id === phaseId) ?? phases[0];
+  const phaseIndex = phases.indexOf(phase);
+  const phaseTopics = topics.filter((t) => t.phase === phase.id);
+  const phaseStats = summarize(
+    phaseTopics.map((t) => t.id),
+    entries,
+  );
+  const visibleTopics = phaseTopics.filter(
+    (t) =>
+      filter === 'all' ||
+      (filter === 'active' &&
+        ['learning', 'practicing'].includes(entries[t.id]?.status ?? '')) ||
+      (filter === 'done' && entries[t.id]?.status === 'done'),
+  );
   const nextTopic =
-    topics.find((t) =>
+    phaseTopics.find((t) =>
       ['learning', 'practicing'].includes(entries[t.id]?.status ?? ''),
     ) ??
-    topics.find(
+    phaseTopics.find(
       (t) => !entries[t.id] || entries[t.id].status === 'not_started',
     );
   const dueTopics = topics.filter(
@@ -108,6 +114,7 @@ export default function Home() {
       setDraft({ ...value, checked_steps: [...value.checked_steps] });
       setBaseline(JSON.stringify(value));
       setSaveMessage('');
+      setDetailTab('learn');
       setPhaseId(topic.phase);
       setSelectedId(id);
     },
@@ -205,7 +212,6 @@ export default function Home() {
           <span>
             nextchapter<span className="brand-dot">.</span>
           </span>
-          <span className="personal-label">MY ROADMAP</span>
         </a>
         <div className="header-actions">
           {user ? (
@@ -222,7 +228,7 @@ export default function Home() {
                   ? 'Sync needs attention'
                   : syncing
                     ? 'Syncing…'
-                    : 'Cloud connected'}
+                    : 'Synced'}
               </output>
               <button
                 className="header-button"
@@ -230,7 +236,7 @@ export default function Home() {
                 onClick={() => setScheduleOpen(true)}
               >
                 <Settings2 size={18} />
-                <span>My schedule</span>
+                <span>Settings</span>
               </button>
             </>
           ) : (
@@ -252,34 +258,14 @@ export default function Home() {
       <main id="main" className="workspace">
         <div className="page-heading">
           <div>
-            <div className="eyebrow">
-              <Compass size={15} /> YOUR NEXT 24 MONTHS + OPTIONAL EXPLORATIONS
-            </div>
             <h1>My learning roadmap</h1>
-            <p>
-              Flutter developer <span>→</span> mobile / full-stack engineer{' '}
-              <span>→</span> build with AI
-            </p>
+            <p>Flutter, full-stack development, and practical AI.</p>
           </div>
-          <div className="overall-progress">
-            <span className="progress-number">
-              {overall.percent}
-              <span>%</span>
+          <div className="compact-progress">
+            <span>
+              <strong>{overall.done}</strong> of {overall.total} completed
             </span>
-            <div>
-              <strong>
-                {overall.done} of {overall.total} topics completed
-              </strong>
-              <p>
-                {overall.active
-                  ? `${overall.active} in progress · Keep going.`
-                  : 'Build on your 1.5+ years of Flutter.'}
-              </p>
-              <Progress
-                value={overall.percent}
-                aria-label="Overall completion"
-              />
-            </div>
+            <Progress value={overall.percent} aria-label="Overall completion" />
           </div>
         </div>
         {error && (
@@ -291,27 +277,14 @@ export default function Home() {
             </button>
           </div>
         )}
-        {!user && (
-          <div className="guest-notice">
-            <span>
-              <Cloud size={17} />{' '}
-              {isCloudConfigured
-                ? 'Explore your roadmap. Sign in to save checklists, notes, and progress across devices.'
-                : 'Your roadmap is ready to explore. Saving and device sync will unlock once cloud setup is complete.'}
-            </span>
-            <button onClick={() => setAuthOpen(true)}>
-              {isCloudConfigured ? 'Connect my progress' : 'Connection status'}{' '}
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        )}
-        <div className="phase-navigation">
-          <p>
-            {phases.length} stages · {topics.length} trackable topics ·{' '}
-            {topics.filter((topic) => topic.guide).length} study guides
+        {!user && ready && (
+          <p className="guest-hint">
+            Sign in to save your progress across devices.
           </p>
-          <label htmlFor="phase-jump">
-            Jump to stage
+        )}
+        <section className="learning-stage" aria-labelledby="stage-heading">
+          <div className="stage-picker">
+            <label htmlFor="phase-jump">Learning stage</label>
             <select
               id="phase-jump"
               value={phaseId}
@@ -320,328 +293,177 @@ export default function Home() {
                 setFilter('all');
               }}
             >
-              {phases.map((phase, index) => (
-                <option key={phase.id} value={phase.id}>
-                  {index + 1}. {phase.shortTitle}
+              {phases.map((p, index) => (
+                <option key={p.id} value={p.id}>
+                  {index + 1}. {p.shortTitle}
                 </option>
               ))}
             </select>
-          </label>
-        </div>
-        <Tabs
-          value={phaseId}
-          onValueChange={(value) => {
-            setPhaseId(String(value));
-            setFilter('all');
-          }}
-          className="phase-tabs"
-        >
-          <TabsList className="phase-rail" aria-label="Learning phases">
-            {phases.map((phase, index) => {
-              const summary = summarize(
-                topics.filter((t) => t.phase === phase.id).map((t) => t.id),
-                entries,
-              );
-              return (
-                <TabsTrigger
-                  key={phase.id}
-                  value={phase.id}
-                  className="phase-tab"
+          </div>
+          <div className="stage-heading">
+            <div className="stage-label">
+              <span>
+                {phase.optional
+                  ? 'Optional stage'
+                  : `Stage ${phaseIndex + 1} of ${phases.length}`}
+              </span>
+              <span>
+                {phaseStats.done} / {phaseStats.total} completed
+              </span>
+            </div>
+            <h2 id="stage-heading">{phase.shortTitle}</h2>
+            <p>{phase.focus}</p>
+            <details className="stage-details" key={phase.id}>
+              <summary>About this stage</summary>
+              <div>
+                <p>{phase.description}</p>
+                <p>{phase.focusNote}</p>
+                <p>
+                  <strong>Goal:</strong> {phase.outcome}
+                </p>
+                <p>
+                  <strong>Suggested timing:</strong>{' '}
+                  {settings.start_date && phase.months
+                    ? phaseWindow(settings.start_date, ...phase.months)
+                    : phase.period}
+                </p>
+                <p>
+                  {phaseTopics.reduce((sum, t) => sum + t.hours, 0)} estimated
+                  study hours · Your pace: {settings.weekly_hours} hours / week
+                </p>
+                <button
+                  className="text-button"
+                  onClick={() =>
+                    user ? setScheduleOpen(true) : setAuthOpen(true)
+                  }
                 >
-                  <span
-                    className={`phase-index ${summary.percent === 100 ? 'finished' : ''}`}
+                  Adjust schedule <Settings2 size={16} />
+                </button>
+              </div>
+            </details>
+          </div>
+          {nextTopic ? (
+            <div className="next-lesson">
+              <div>
+                <span>Your next topic</span>
+                <strong>{nextTopic.title}</strong>
+              </div>
+              <button
+                className="primary-button"
+                onClick={() => openTopic(nextTopic.id)}
+              >
+                {['learning', 'practicing'].includes(
+                  entries[nextTopic.id]?.status ?? '',
+                )
+                  ? 'Continue learning'
+                  : 'Start learning'}
+                <ArrowRight size={18} />
+              </button>
+            </div>
+          ) : (
+            <p className="stage-finished">
+              <Check size={18} /> You’ve worked through this stage. Review a
+              topic or explore the next stage.
+            </p>
+          )}
+          <div className="list-heading">
+            <h3>
+              Topics <span>{phaseTopics.length}</span>
+            </h3>
+            <label>
+              <span className="sr-only">Filter topics</span>
+              <select
+                value={filter}
+                onChange={(event) => setFilter(event.target.value)}
+              >
+                <option value="all">All topics</option>
+                <option value="active">In progress</option>
+                <option value="done">Completed</option>
+              </select>
+            </label>
+          </div>
+          <ol className="topic-list" aria-label={`${phase.shortTitle} topics`}>
+            {visibleTopics.map((topic) => {
+              const status = entries[topic.id]?.status ?? 'not_started';
+              return (
+                <li key={topic.id}>
+                  <button
+                    className={`topic-row status-${status}`}
+                    onClick={() => openTopic(topic.id)}
+                    aria-label={`${topic.title}: ${statusLabels[status]}`}
                   >
-                    {summary.percent === 100 ? (
-                      <Check size={16} />
-                    ) : (
-                      String(index + 1).padStart(2, '0')
-                    )}
-                  </span>
-                  <span>
-                    <strong>{phase.shortTitle}</strong>
-                    <small>
-                      {phase.period}
-                      <span className="phase-count">
-                        {summary.done}/{summary.total}
+                    <span className="topic-number" aria-hidden="true">
+                      {status === 'done' ? (
+                        <Check size={18} />
+                      ) : (
+                        String(phaseTopics.indexOf(topic) + 1).padStart(2, '0')
+                      )}
+                    </span>
+                    <span className="topic-copy">
+                      <strong>{topic.title}</strong>
+                      <span>
+                        {topic.project ? 'Practice project · ' : ''}
+                        {topic.hours} hours
                       </span>
-                    </small>
-                  </span>
-                </TabsTrigger>
+                    </span>
+                    <span className={`topic-state ${status}`}>
+                      {statusLabels[status]}
+                    </span>
+                    <ChevronRight
+                      size={18}
+                      className="topic-arrow"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </li>
               );
             })}
-          </TabsList>
-          {phases.map((phase, index) => {
-            const phaseTopics = topics.filter((t) => t.phase === phase.id);
-            const stats = summarize(
-              phaseTopics.map((t) => t.id),
-              entries,
-            );
-            const visibleTopics = phaseTopics.filter(
-              (t) =>
-                filter === 'all' ||
-                (filter === 'active' &&
-                  ['learning', 'practicing'].includes(
-                    entries[t.id]?.status ?? '',
-                  )) ||
-                (filter === 'done' && entries[t.id]?.status === 'done'),
-            );
-            return (
-              <TabsContent
-                key={phase.id}
-                value={phase.id}
-                className="phase-content"
-              >
-                <div className="learning-layout">
-                  <section
-                    className="roadmap-board"
-                    aria-label={`${phase.shortTitle} roadmap`}
-                  >
-                    <div className="board-topline">
-                      <span>
-                        <span className="live-dot" />
-                        {stats.done} OF {stats.total} COMPLETED
-                      </span>
-                      <span>
-                        {settings.start_date && phase.months
-                          ? phaseWindow(settings.start_date, ...phase.months)
-                          : phase.period}
-                      </span>
-                    </div>
-                    <div className="phase-intro">
-                      <span className="phase-kicker">
-                        {phase.optional ? 'OPTIONAL STAGE' : 'STAGE'}{' '}
-                        {String(index + 1).padStart(2, '0')} ·{' '}
-                        {phase.period.toUpperCase()}
-                      </span>
-                      <h2>{phase.title}</h2>
-                      <p>{phase.description}</p>
-                      <div className="phase-meta">
-                        <span>
-                          <Clock3 size={14} />
-                          {phaseTopics.reduce(
-                            (sum, t) => sum + t.hours,
-                            0,
-                          )}{' '}
-                          estimated hours
-                        </span>
-                        {phaseTopics.some((topic) => topic.project) && (
-                          <span>
-                            <Flag size={14} />
-                            {
-                              phaseTopics.filter((topic) => topic.project)
-                                .length
-                            }{' '}
-                            practical milestone
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="board-controls">
-                      <Tabs
-                        value={filter}
-                        onValueChange={(v) => setFilter(String(v))}
-                      >
-                        <TabsList
-                          className="filter-tabs"
-                          aria-label="Topic filter"
-                        >
-                          <TabsTrigger value="all">All topics</TabsTrigger>
-                          <TabsTrigger value="active">In progress</TabsTrigger>
-                          <TabsTrigger value="done">Completed</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="all" className="sr-only">
-                          All topics shown below
-                        </TabsContent>
-                        <TabsContent value="active" className="sr-only">
-                          In-progress topics shown below
-                        </TabsContent>
-                        <TabsContent value="done" className="sr-only">
-                          Completed topics shown below
-                        </TabsContent>
-                      </Tabs>
-                      <div className="graph-help">
-                        <BookOpen size={14} /> Click a topic to explore
-                      </div>
-                    </div>
-                    <div className="graph">
-                      <div className="graph-root">
-                        <Layers3 size={18} />
-                        {phase.shortTitle}
-                      </div>
-                      <div className="topic-grid">
-                        {visibleTopics.map((topic) => {
-                          const status =
-                            entries[topic.id]?.status ?? 'not_started';
-                          const step = phaseTopics.indexOf(topic) + 1;
-                          return (
-                            <button
-                              className={`topic-node ${topic.project ? 'project-node' : ''} status-${status}`}
-                              key={topic.id}
-                              onClick={() => openTopic(topic.id)}
-                              aria-label={`${topic.title}: ${statusLabels[status]}`}
-                            >
-                              <span className="node-top">
-                                <span className="node-kind">
-                                  {topic.project ? (
-                                    <Flag size={15} />
-                                  ) : (
-                                    <Code2 size={15} />
-                                  )}{' '}
-                                  {topic.project
-                                    ? 'BUILD & PROVE'
-                                    : `SKILL ${String(step).padStart(2, '0')}`}
-                                </span>
-                                <span
-                                  className={`node-status ${status}`}
-                                  aria-hidden="true"
-                                >
-                                  {status === 'done' ? (
-                                    <Check size={12} />
-                                  ) : status === 'skipped' ? (
-                                    <Minus size={12} />
-                                  ) : null}
-                                </span>
-                              </span>
-                              <strong>{topic.title}</strong>
-                              <p>{topic.summary}</p>
-                              <span className="node-bottom">
-                                <span>
-                                  <Clock3 size={14} />
-                                  {topic.hours} hours
-                                </span>
-                                <span className="node-state-label">
-                                  {statusLabels[status]}
-                                  <ChevronRight size={15} />
-                                </span>
-                              </span>
-                            </button>
-                          );
-                        })}
-                        {!visibleTopics.length && (
-                          <div className="empty-topics">
-                            <BookOpen size={25} />
-                            <strong>
-                              {filter === 'done'
-                                ? 'Your completed topics will appear here.'
-                                : 'No topics in progress in this phase yet.'}
-                            </strong>
-                            <button
-                              className="text-button"
-                              onClick={() => setFilter('all')}
-                            >
-                              Explore all topics <ArrowRight size={15} />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                      <div className="graph-end">
-                        <Target size={17} />
-                        {phase.outcome}
-                      </div>
-                    </div>
-                    {index < phases.length - 1 && (
-                      <button
-                        className="next-phase"
-                        onClick={() => {
-                          setPhaseId(phases[index + 1].id);
-                          setFilter('all');
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                      >
-                        Next: {phases[index + 1].shortTitle}
-                        <ArrowRight size={16} />
-                      </button>
-                    )}
-                  </section>
-                  <aside className="focus-column">
-                    {nextTopic && (
-                      <button
-                        className="continue-card"
-                        onClick={() => openTopic(nextTopic.id)}
-                      >
-                        <span className="eyebrow">
-                          <Compass size={15} />
-                          {overall.active
-                            ? 'PICK UP WHERE YOU LEFT OFF'
-                            : 'A GOOD PLACE TO START'}
-                        </span>
-                        <strong>{nextTopic.title}</strong>
-                        <span>
-                          Open topic <ArrowRight size={16} />
-                        </span>
-                      </button>
-                    )}
-                    <div className="focus-card">
-                      <span className="eyebrow">
-                        <Sparkles size={15} /> YOUR FOCUS
-                      </span>
-                      <h3>{phase.focus}</h3>
-                      <p>{phase.focusNote}</p>
-                      <div className="focus-divider" />
-                      <span className="eyebrow">A SUSTAINABLE PACE</span>
-                      <div className="weekly-hours">
-                        {settings.weekly_hours}
-                        <span> hours / week</span>
-                      </div>
-                      <div className="rhythm">
-                        <span>Build & practice</span>
-                        <strong>60%</strong>
-                        <span>Learn the concepts</span>
-                        <strong>25%</strong>
-                        <span>Review & explain</span>
-                        <strong>15%</strong>
-                      </div>
-                      <button
-                        className="text-button schedule-link"
-                        onClick={() =>
-                          user ? setScheduleOpen(true) : setAuthOpen(true)
-                        }
-                      >
-                        Adjust my schedule <Settings2 size={14} />
-                      </button>
-                    </div>
-                    {dueTopics.length > 0 && (
-                      <div className="review-card">
-                        <span className="eyebrow">READY TO REVISIT</span>
-                        {dueTopics.map((t) => (
-                          <button key={t.id} onClick={() => openTopic(t.id)}>
-                            {t.title}
-                            <ChevronRight size={16} />
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                    <div className="note-card">
-                      <span className="note-icon">
-                        <Check size={17} />
-                      </span>
-                      <h3>Already know a topic?</h3>
-                      <p>
-                        Use its checklist to check your understanding, then mark
-                        it complete. Your experience counts.
-                      </p>
-                    </div>
-                    <a
-                      className="reference-link"
-                      href="https://roadmap.sh/flutter"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Inspired by roadmap.sh <ArrowUpRight size={15} />
-                    </a>
-                  </aside>
-                </div>
-              </TabsContent>
-            );
-          })}
-        </Tabs>
+          </ol>
+          {!visibleTopics.length && (
+            <div className="empty-topics">
+              <p>
+                {filter === 'done'
+                  ? 'No completed topics in this stage yet.'
+                  : 'No topics in progress in this stage yet.'}
+              </p>
+              <button className="text-button" onClick={() => setFilter('all')}>
+                Show all topics <ArrowRight size={16} />
+              </button>
+            </div>
+          )}
+          {phaseIndex < phases.length - 1 && (
+            <button
+              className="next-stage"
+              onClick={() => {
+                setPhaseId(phases[phaseIndex + 1].id);
+                setFilter('all');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
+              Next stage: {phases[phaseIndex + 1].shortTitle}
+              <ArrowRight size={17} />
+            </button>
+          )}
+        </section>
+        {dueTopics.length > 0 && (
+          <details className="review-list">
+            <summary>
+              Ready to review <span>{dueTopics.length}</span>
+            </summary>
+            {dueTopics.map((t) => (
+              <button key={t.id} onClick={() => openTopic(t.id)}>
+                {t.title}
+                <ChevronRight size={17} />
+              </button>
+            ))}
+          </details>
+        )}
       </main>
       <footer className="footer">
-        Made for your next chapter.
-        <span>
-          {overall.done} completed · {overall.active} in progress ·{' '}
-          {overall.skipped} skipped
-        </span>
+        <span>Learn at your own pace.</span>
+        <a href="https://roadmap.sh/flutter" target="_blank" rel="noreferrer">
+          Inspired by roadmap.sh <ArrowUpRight size={14} />
+        </a>
       </footer>
       <Sheet
         open={!!selected}
@@ -662,121 +484,143 @@ export default function Home() {
               <fieldset
                 className="sheet-body"
                 disabled={saving}
-                aria-label="Topic progress and notes"
+                aria-label="Topic lessons, progress, and notes"
               >
-                <h3>My progress</h3>
-                <RadioGroup
-                  value={draft.status}
-                  onValueChange={(v) => setField('status', v as LearningStatus)}
-                  className="status-options"
-                  aria-label="Learning status"
+                <Tabs
+                  className="topic-details-tabs"
+                  value={detailTab}
+                  onValueChange={(value) => setDetailTab(String(value))}
                 >
-                  {statuses.map((status) => (
-                    <label
-                      className={`status-option ${draft.status === status ? 'selected' : ''}`}
-                      key={status}
+                  <TabsList className="detail-tabs" aria-label="Topic sections">
+                    <TabsTrigger value="learn">Learn</TabsTrigger>
+                    <TabsTrigger value="practice">Practice</TabsTrigger>
+                    <TabsTrigger value="notes">My notes</TabsTrigger>
+                  </TabsList>
+                  <TabsContent className="detail-panel" value="learn">
+                    <h3>Learning resources</h3>
+                    {selected.resources.map((r) => (
+                      <a
+                        className="resource-link"
+                        key={r.url}
+                        href={r.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span>
+                          {r.title}
+                          <small>{new URL(r.url).hostname}</small>
+                        </span>
+                        <ArrowUpRight size={18} />
+                      </a>
+                    ))}
+                    {selected.guide && (
+                      <section
+                        className="lesson-section"
+                        aria-label="Study guide"
+                      >
+                        <h3>Study guide</h3>
+                        <StudyGuide content={selected.guide} />
+                      </section>
+                    )}
+                    <button
+                      className="secondary-button practice-link"
+                      onClick={() => setDetailTab('practice')}
                     >
-                      <RadioGroupItem value={status} />
-                      <span>{statusLabels[status]}</span>
-                    </label>
-                  ))}
-                </RadioGroup>
-                <h3>
-                  What to practice{' '}
-                  <span className="check-count">
-                    {draft.checked_steps.length}/{selected.steps.length}
-                  </span>
-                </h3>
-                <div className="practice-checks">
-                  {selected.steps.map((step, i) => (
-                    <label
-                      key={step}
-                      className={
-                        draft.checked_steps.includes(i) ? 'checked' : ''
+                      Go to practice <ArrowRight size={17} />
+                    </button>
+                  </TabsContent>
+                  <TabsContent className="detail-panel" value="practice">
+                    <h3>My progress</h3>
+                    <RadioGroup
+                      value={draft.status}
+                      onValueChange={(v) =>
+                        setField('status', v as LearningStatus)
                       }
+                      className="status-options"
+                      aria-label="Learning status"
                     >
-                      <Checkbox
-                        checked={draft.checked_steps.includes(i)}
-                        onCheckedChange={(checked) =>
-                          setField(
-                            'checked_steps',
-                            checked
-                              ? [...draft.checked_steps, i]
-                              : draft.checked_steps.filter((n) => n !== i),
-                          )
-                        }
-                      />
-                      <span>{step}</span>
+                      {statuses.map((status) => (
+                        <label
+                          className={`status-option ${draft.status === status ? 'selected' : ''}`}
+                          key={status}
+                        >
+                          <RadioGroupItem value={status} />
+                          <span>{statusLabels[status]}</span>
+                        </label>
+                      ))}
+                    </RadioGroup>
+                    <h3>
+                      What to practice{' '}
+                      <span className="check-count">
+                        {draft.checked_steps.length}/{selected.steps.length}
+                      </span>
+                    </h3>
+                    <div className="practice-checks">
+                      {selected.steps.map((step, i) => (
+                        <label
+                          key={step}
+                          className={
+                            draft.checked_steps.includes(i) ? 'checked' : ''
+                          }
+                        >
+                          <Checkbox
+                            checked={draft.checked_steps.includes(i)}
+                            onCheckedChange={(checked) =>
+                              setField(
+                                'checked_steps',
+                                checked
+                                  ? [...draft.checked_steps, i]
+                                  : draft.checked_steps.filter((n) => n !== i),
+                              )
+                            }
+                          />
+                          <span>{step}</span>
+                        </label>
+                      ))}
+                    </div>
+                    <h3>Know it when you can…</h3>
+                    <p className="proof-box">{selected.proof}</p>
+                  </TabsContent>
+                  <TabsContent className="detail-panel" value="notes">
+                    <label className="field-label" htmlFor="topic-notes">
+                      My notes
                     </label>
-                  ))}
-                </div>
-                <h3>Know it when you can…</h3>
-                <p className="proof-box">{selected.proof}</p>
-                {selected.guide && (
-                  <section className="lesson-section" aria-label="Study guide">
-                    <h3>Study guide</h3>
-                    <details className="lesson-details" key={selected.id}>
-                      <summary>
-                        <BookOpen size={17} /> Read lesson, examples & reference
-                        notes
-                      </summary>
-                      <StudyGuide content={selected.guide} />
-                    </details>
-                  </section>
-                )}
-                <h3>Start learning</h3>
-                {selected.resources.map((r) => (
-                  <a
-                    className="resource-link"
-                    key={r.url}
-                    href={r.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span>
-                      {r.title}
-                      <small>{new URL(r.url).hostname}</small>
-                    </span>
-                    <ArrowUpRight size={19} />
-                  </a>
-                ))}
-                <label className="field-label" htmlFor="topic-notes">
-                  My notes
-                </label>
-                <Textarea
-                  id="topic-notes"
-                  value={draft.notes}
-                  onChange={(e) => setField('notes', e.target.value)}
-                  maxLength={20000}
-                  placeholder="What did I learn? What was difficult? What should I revisit?"
-                  rows={5}
-                />
-                <label className="field-label" htmlFor="project-link">
-                  Project or evidence link <span>optional</span>
-                </label>
-                <Input
-                  id="project-link"
-                  type="url"
-                  value={draft.evidence_url}
-                  onChange={(e) => setField('evidence_url', e.target.value)}
-                  maxLength={2048}
-                  placeholder="https://github.com/…"
-                />
-                <label className="field-label" htmlFor="review-date">
-                  Revisit on <span>optional</span>
-                </label>
-                <Input
-                  id="review-date"
-                  type="date"
-                  value={draft.review_date ?? ''}
-                  onChange={(e) =>
-                    setField('review_date', e.target.value || null)
-                  }
-                />
-                <p className="field-help">
-                  Appears in your review list on this date. No email
-                  notification.
-                </p>
+                    <Textarea
+                      id="topic-notes"
+                      value={draft.notes}
+                      onChange={(e) => setField('notes', e.target.value)}
+                      maxLength={20000}
+                      placeholder="What did I learn? What was difficult? What should I revisit?"
+                      rows={5}
+                    />
+                    <label className="field-label" htmlFor="project-link">
+                      Project or evidence link <span>optional</span>
+                    </label>
+                    <Input
+                      id="project-link"
+                      type="url"
+                      value={draft.evidence_url}
+                      onChange={(e) => setField('evidence_url', e.target.value)}
+                      maxLength={2048}
+                      placeholder="https://github.com/…"
+                    />
+                    <label className="field-label" htmlFor="review-date">
+                      Revisit on <span>optional</span>
+                    </label>
+                    <Input
+                      id="review-date"
+                      type="date"
+                      value={draft.review_date ?? ''}
+                      onChange={(e) =>
+                        setField('review_date', e.target.value || null)
+                      }
+                    />
+                    <p className="field-help">
+                      Appears in your review list on this date. No email
+                      notification.
+                    </p>
+                  </TabsContent>
+                </Tabs>
               </fieldset>
               <div className="sheet-save">
                 <output

@@ -10,7 +10,9 @@ Cloud sign-in and private progress storage use the owner's Supabase Free project
 
 - 84 learning topics, including six practical milestones, across nine core stages and one optional exploration stage.
 - 54 study guides, including the supplied Dart lessons with formatted code examples and reference tables.
-- Connected topic maps with official learning resources, practice checklists, time estimates, and completion criteria.
+- A single stage selector and numbered topic list, with a next-topic action and optional stage details.
+- Separate Learn, Practice, and My notes tabs keep official resources, study guides, checklists, and private notes easy to navigate.
+- Completion filters, review reminders, time estimates, and completion criteria remain available.
 - Learning, practicing, completed, and skipped states; private notes, evidence links, and review dates.
 - Email-link sign-in and PostgreSQL storage through Supabase, with per-user row-level access rules.
 - Adjustable start date and weekly study hours; JSON progress export.
