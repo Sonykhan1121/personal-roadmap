@@ -4,14 +4,14 @@ A personal tracker for a Flutter developer with 1.5+ years of experience, progre
 
 Website: [My learning roadmap](https://sonykhan1121.github.io/personal-roadmap/).
 
-Setup status: the curriculum and interface are ready. Cloud sign-in and saving will be available after the owner's Supabase project is created and connected. The browser configuration is intentionally empty until then.
+Cloud sign-in and private progress storage use the owner's Supabase Free project, `personal-learning-roadmap`, in `portfolio_admin_panel`. Open the website, sign in using the email associated with your Supabase account, and open the emailed sign-in link on the device you want to use. Repeat with the same email on another device to access the same progress.
 
 ## Features
 
 - 42 learning topics, including six practical project milestones, across a suggested 24 months.
 - Connected topic maps with official learning resources, practice checklists, time estimates, and completion criteria.
 - Learning, practicing, completed, and skipped states; private notes, evidence links, and review dates.
-- Email-code sign-in and PostgreSQL storage through Supabase, with per-user row-level access rules.
+- Email-link sign-in and PostgreSQL storage through Supabase, with per-user row-level access rules.
 - Adjustable start date and weekly study hours; JSON progress export.
 - Responsive layout, keyboard-accessible controls, and reduced-motion support.
 
@@ -38,7 +38,9 @@ Browser configuration belongs in `lib/supabase.ts` and may contain only the proj
 
 The schema is in `database/schema.sql`. Both tables use row-level security and enforce ownership for reads and writes. Progress saves use an update timestamp to detect concurrent edits rather than silently overwrite another device's changes.
 
-Email sign-in expects the Supabase Magic Link template to include `{{ .Token }}`. Configure the correct project and allow the owner's email to receive authentication emails. The built-in Supabase email sender is limited and is intended for testing with organization members; other recipients require a configured email provider.
+The project was created with automatic RLS enabled. `database/harden-auto-rls.sql` restricts Supabase's generated helper to database administrators; apply it only when that helper exists.
+
+Email sign-in uses Supabase's default Magic Link template. The authentication Site URL is `https://sonykhan1121.github.io/personal-roadmap/`. The free built-in email sender accepts project organization members and has a low sending limit; use the account's member email and keep the signed-in session on each device. Other recipients or higher email volume require a separately configured email provider. No custom SMTP or paid Supabase plan is configured.
 
 ## Data and synchronization
 
@@ -51,6 +53,10 @@ Supabase Free projects can pause after inactivity. The curriculum stays readable
 ## Validation
 
 Unit tests cover completion accounting, checklist bounds, evidence-link validation, date validation, and month-end scheduling. TypeScript checks and a static export build are required before deployment. Resource link checks are recorded in `docs/resource-checks.json`.
+
+`database/verify-rls.sql` checks owner reads and writes, rejected ownership reassignment, cross-user isolation, and revoked anonymous access. It passed in the connected project on September 6, 2026; all test users and records were rolled back. Live email delivery and signing in on two physical devices require the owner's inbox and are not covered by that database verification.
+
+The connected project's Security Advisor reported zero errors and zero warnings after hardening. Public API checks confirmed both tables reject signed-out reads with HTTP 401, and Auth reports email sign-in enabled.
 
 An optional WebMCP interface exposes progress reads, topic opening, and saving a topic status using the same authenticated actions as the UI. Browsers without WebMCP ignore it. A supported live WebMCP validation context was not available during this build, so its live registration is not yet verified.
 

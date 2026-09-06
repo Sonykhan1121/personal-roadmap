@@ -14,14 +14,11 @@ import { getSupabase, isCloudConfigured } from '@/lib/supabase';
 export function AuthDialog({
   open,
   onOpenChange,
-  onSuccess,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSuccess: () => void;
 }) {
   const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -31,12 +28,11 @@ export function AuthDialog({
     const timer = window.setTimeout(() => setCooldown((c) => c - 1), 1000);
     return () => window.clearTimeout(timer);
   }, [cooldown]);
-  async function sendCode() {
+
+  async function sendLink() {
     const db = getSupabase();
     if (!db) {
-      setError(
-        'Cloud sign-in is still being connected. You can explore every topic meanwhile.',
-      );
+      setError('Cloud sign-in is still being connected.');
       return;
     }
     setBusy(true);
@@ -44,7 +40,10 @@ export function AuthDialog({
     try {
       const { error } = await db.auth.signInWithOtp({
         email: email.trim(),
-        options: { shouldCreateUser: true },
+        options: {
+          shouldCreateUser: true,
+          emailRedirectTo: 'https://sonykhan1121.github.io/personal-roadmap/',
+        },
       });
       if (error) throw error;
       setSent(true);
@@ -53,40 +52,13 @@ export function AuthDialog({
       setError(
         e instanceof Error
           ? e.message
-          : 'Could not send your sign-in code. Please try again.',
+          : 'Could not send your sign-in link. Please try again.',
       );
     } finally {
       setBusy(false);
     }
   }
-  async function verifyCode() {
-    const db = getSupabase();
-    if (!db) return;
-    setBusy(true);
-    setError('');
-    try {
-      const { data, error } = await db.auth.verifyOtp({
-        email: email.trim(),
-        token: code.trim(),
-        type: 'email',
-      });
-      if (error) throw error;
-      if (!data.session)
-        throw new Error('Sign-in did not complete. Request a new code.');
-      setCode('');
-      setSent(false);
-      onOpenChange(false);
-      onSuccess();
-    } catch (e) {
-      setError(
-        e instanceof Error
-          ? e.message
-          : 'That code did not work. Please try again.',
-      );
-    } finally {
-      setBusy(false);
-    }
-  }
+
   return (
     <Dialog
       open={open}
@@ -106,11 +78,11 @@ export function AuthDialog({
           </DialogDescription>
         </DialogHeader>
         <form
+          className="auth-form"
           onSubmit={(e) => {
             e.preventDefault();
-            void (sent ? verifyCode() : sendCode());
+            void sendLink();
           }}
-          className="auth-form"
         >
           <label htmlFor="signin-email">Email address</label>
           {!isCloudConfigured && (
@@ -128,31 +100,17 @@ export function AuthDialog({
             onChange={(e) => setEmail(e.target.value)}
             required
             readOnly={sent}
-            disabled={!isCloudConfigured}
+            disabled={!isCloudConfigured || busy}
             maxLength={254}
           />
           {sent && (
-            <>
-              <div className="email-notice">
-                <Mail size={18} />
-                <span>
-                  Check your inbox for a sign-in code. It may take a moment.
-                </span>
-              </div>
-              <label htmlFor="signin-code">Email code</label>
-              <Input
-                id="signin-code"
-                inputMode="numeric"
-                autoComplete="one-time-code"
-                placeholder="Enter your code"
-                value={code}
-                onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
-                pattern="[0-9]{6,10}"
-                minLength={6}
-                maxLength={10}
-                required
-              />
-            </>
+            <div className="email-notice">
+              <Mail size={18} />
+              <span>
+                Check your inbox and spam folder. Open the newest sign-in link
+                on the device you want to use. Each link works once.
+              </span>
+            </div>
           )}
           {error && (
             <p className="form-error" role="alert">
@@ -161,39 +119,33 @@ export function AuthDialog({
           )}
           <button
             className="primary-button"
-            disabled={busy || !isCloudConfigured}
+            disabled={busy || !isCloudConfigured || cooldown > 0}
           >
-            {busy ? <LoaderCircle size={17} className="spinning" /> : null}
-            {sent ? 'Verify & sign in' : 'Email me a sign-in code'}
-            {!busy && <ArrowRight size={17} />}
+            {busy && <LoaderCircle size={17} className="spinning" />}
+            {cooldown
+              ? `Resend in ${cooldown}s`
+              : sent
+                ? 'Resend sign-in link'
+                : 'Email me a sign-in link'}
+            {!busy && !cooldown && <ArrowRight size={17} />}
           </button>
           {sent && (
-            <div className="auth-actions">
-              <button
-                type="button"
-                className="text-button"
-                disabled={busy}
-                onClick={() => {
-                  setSent(false);
-                  setCode('');
-                  setError('');
-                }}
-              >
-                Use another email
-              </button>
-              <button
-                type="button"
-                className="text-button"
-                disabled={busy || cooldown > 0}
-                onClick={() => void sendCode()}
-              >
-                {cooldown ? `Resend in ${cooldown}s` : 'Resend code'}
-              </button>
-            </div>
+            <button
+              type="button"
+              className="text-button"
+              disabled={busy}
+              onClick={() => {
+                setSent(false);
+                setError('');
+              }}
+            >
+              Use another email
+            </button>
           )}
         </form>
         <p className="modal-footnote">
-          A free personal tracker. No subscription or payment details.
+          Use the email associated with your Supabase account. This personal
+          tracker uses the free email service for project members.
         </p>
       </DialogContent>
     </Dialog>

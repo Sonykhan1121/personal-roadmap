@@ -627,7 +627,11 @@ export default function Home() {
                 <SheetTitle>{selected.title}</SheetTitle>
                 <SheetDescription>{selected.summary}</SheetDescription>
               </SheetHeader>
-              <fieldset className="sheet-body" disabled={saving} aria-label="Topic progress and notes">
+              <fieldset
+                className="sheet-body"
+                disabled={saving}
+                aria-label="Topic progress and notes"
+              >
                 <h3>My progress</h3>
                 <RadioGroup
                   value={draft.status}
@@ -768,13 +772,7 @@ export default function Home() {
           )}
         </SheetContent>
       </Sheet>
-      <AuthDialog
-        open={authOpen}
-        onOpenChange={setAuthOpen}
-        onSuccess={() => {
-          setSaveMessage('Signed in. Save your progress when you are ready.');
-        }}
-      />
+      <AuthDialog open={authOpen && !user} onOpenChange={setAuthOpen} />
       {scheduleOpen && (
         <ScheduleDialog
           open={scheduleOpen}
