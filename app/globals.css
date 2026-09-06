@@ -1348,3 +1348,188 @@ h3 {
     font-size: 11px;
   }
 }
+
+/* Expanded learning stages and the user's lesson reference material. */
+.phase-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 22px 0 14px;
+  color: #5b6b74;
+  font-size: 13px;
+}
+.phase-navigation p {
+  margin: 0;
+}
+.phase-navigation label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.phase-navigation select {
+  min-height: 40px;
+  max-width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: #213842;
+  font: inherit;
+}
+.phase-rail {
+  scrollbar-width: thin;
+}
+.phase-tab {
+  flex: 1 0 178px;
+}
+.lesson-details {
+  border: 1px solid #cdded9;
+  border-radius: 10px;
+  background: #f8fbfa;
+}
+.lesson-details > summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 15px;
+  color: #21584b;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  list-style: none;
+}
+.lesson-details > summary::-webkit-details-marker {
+  display: none;
+}
+.lesson-details > summary::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 20px;
+}
+.lesson-details[open] > summary::after {
+  content: '−';
+}
+.lesson-details > summary:focus-visible {
+  outline: 2px solid #237660;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.study-guide {
+  padding: 0 16px 18px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #344b56;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.study-guide h4,
+.study-guide h5 {
+  margin: 24px 0 10px;
+  color: #1e3540;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.study-guide h4 {
+  font-size: 17px;
+}
+.study-guide h5 {
+  font-size: 15px;
+}
+.study-guide p {
+  margin: 12px 0;
+}
+.study-guide ul,
+.study-guide ol {
+  padding-left: 22px;
+  margin: 12px 0;
+}
+.study-guide ul {
+  list-style: disc;
+}
+.study-guide ol {
+  list-style: decimal;
+}
+.study-guide li {
+  margin: 6px 0;
+}
+.study-guide pre {
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  background: #142832;
+  color: #e5f5ee;
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre;
+}
+.study-guide code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+.study-guide :not(pre) > code {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: #e6efec;
+  color: #21584b;
+  font-size: 0.92em;
+}
+.study-guide a {
+  color: #176850;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.study-guide blockquote {
+  margin: 16px 0;
+  padding: 2px 12px;
+  border-left: 3px solid #7eafa0;
+  background: #edf4f1;
+}
+.study-guide hr {
+  border: 0;
+  border-top: 1px solid #dbe5e1;
+  margin: 24px 0;
+}
+.lesson-table {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+.lesson-table table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 360px;
+  font-size: 12px;
+}
+.lesson-table th,
+.lesson-table td {
+  border: 1px solid #d3dfda;
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.lesson-table th {
+  background: #e7efeb;
+  color: #1e493e;
+}
+@media (max-width: 640px) {
+  .phase-navigation {
+    align-items: stretch;
+  }
+  .phase-navigation label {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .phase-navigation select {
+    flex: 1;
+    min-width: 0;
+  }
+  .study-guide {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .study-guide ul,
+  .study-guide ol {
+    padding-left: 17px;
+  }
+}

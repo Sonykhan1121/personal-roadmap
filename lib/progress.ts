@@ -104,6 +104,9 @@ export function phaseDates(start: string, index: number) {
     [18, 24],
   ];
   const [from, to] = ranges[index];
+  return phaseWindow(start, from, to);
+}
+export function phaseWindow(start: string, from: number, to: number) {
   const [y, m, d] = start.split('-').map(Number);
   const shift = (offset: number) => {
     const last = new Date(y, m - 1 + offset + 1, 0).getDate();

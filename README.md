@@ -8,7 +8,8 @@ Cloud sign-in and private progress storage use the owner's Supabase Free project
 
 ## Features
 
-- 42 learning topics, including six practical project milestones, across a suggested 24 months.
+- 84 learning topics, including six practical milestones, across nine core stages and one optional exploration stage.
+- 54 study guides, including the supplied Dart lessons with formatted code examples and reference tables.
 - Connected topic maps with official learning resources, practice checklists, time estimates, and completion criteria.
 - Learning, practicing, completed, and skipped states; private notes, evidence links, and review dates.
 - Email-link sign-in and PostgreSQL storage through Supabase, with per-user row-level access rules.
@@ -23,7 +24,7 @@ Use Node.js 24 and pnpm 11.19.0.
 pnpm install --frozen-lockfile
 pnpm dev
 pnpm exec tsc --noEmit
-node --experimental-strip-types --test tests/progress.test.mjs
+pnpm test
 ```
 
 ## Deployment
@@ -52,7 +53,9 @@ Supabase Free projects can pause after inactivity. The curriculum stays readable
 
 ## Validation
 
-Unit tests cover completion accounting, checklist bounds, evidence-link validation, date validation, and month-end scheduling. TypeScript checks and a static export build are required before deployment. Resource link checks are recorded in `docs/resource-checks.json`.
+Tests cover completion accounting, checklist bounds, evidence-link validation, date validation, month-end scheduling, lesson rendering, and unsafe Markdown handling. A compatibility fixture preserves the IDs and checkbox meanings of the original 42 topics. New topics use the existing schema without changing saved progress. TypeScript checks and a static production build are required before deployment. Resource link checks are recorded in `docs/resource-checks.json` and `docs/added-resource-checks.json`.
+
+The expanded curriculum is mapped in `docs/curriculum-update.md`. Its schedule is a flexible guide with overlapping practice stages. Tool comparisons and optional specializations do not require mastering every listed framework. The overall completion percentage includes all 84 trackable topics; adding topics changes the denominator but preserves completed records.
 
 `database/verify-rls.sql` checks owner reads and writes, rejected ownership reassignment, cross-user isolation, and revoked anonymous access. It passed in the connected project on September 6, 2026; all test users and records were rolled back. Live email delivery and signing in on two physical devices require the owner's inbox and are not covered by that database verification.
 

@@ -8,81 +8,10 @@ export type Topic = {
   proof: string;
   resources: { title: string; url: string }[];
   project?: boolean;
+  guide?: string;
 };
-export const phases = [
-  {
-    id: 'flutter',
-    shortTitle: 'Flutter depth',
-    period: 'Months 1–3',
-    title: 'Make Flutter your strongest skill.',
-    description:
-      'Go deeper into the apps you already build. Architecture, testing, performance, and a better understanding of Dart.',
-    outcome: 'A reliable Flutter foundation',
-    focus: 'Understand what happens under the UI.',
-    focusNote:
-      'Use an existing app as your practice ground. Improve one real feature at a time.',
-  },
-  {
-    id: 'backend',
-    shortTitle: 'Backend & SQL',
-    period: 'Months 4–6',
-    title: 'Build what powers your app.',
-    description:
-      'Own the API, the data model, and the access rules behind a Flutter product.',
-    outcome: 'A backend you can explain and maintain',
-    focus: 'Follow one request from app to database.',
-    focusNote:
-      'Choose TypeScript and Node.js as one backend stack. Make the fundamentals your priority.',
-  },
-  {
-    id: 'production',
-    shortTitle: 'Ship reliably',
-    period: 'Months 7–9',
-    title: 'Take a working app into the real world.',
-    description:
-      'Handle weak networks, background jobs, releases, and the things that happen after launch.',
-    outcome: 'A product that survives real use',
-    focus: 'Design for the unhappy path.',
-    focusNote:
-      'A finished feature includes retries, permissions, loading states, errors, and visibility into failures.',
-  },
-  {
-    id: 'ai',
-    shortTitle: 'Practical AI',
-    period: 'Months 10–12',
-    title: 'Add AI that earns its place.',
-    description:
-      'Build a useful AI feature, ground it in the right data, and measure how well it works.',
-    outcome: 'One useful, evaluated AI feature',
-    focus: 'Start with a user problem.',
-    focusNote:
-      'You can integrate existing models before learning to train models. Measure quality, speed, and cost.',
-  },
-  {
-    id: 'systems',
-    shortTitle: 'Engineering depth',
-    period: 'Months 13–18',
-    title: 'Make better engineering decisions.',
-    description:
-      'Deepen system design, mobile platform knowledge, observability, and the tradeoffs behind reliable products.',
-    outcome: 'Confidence owning a whole feature',
-    focus: 'Learn the tradeoff, then use it.',
-    focusNote:
-      'Scale the architecture to the product. Explain why a simple solution is enough, and when it stops being enough.',
-  },
-  {
-    id: 'career',
-    shortTitle: 'Remote readiness',
-    period: 'Months 19–24',
-    title: 'Make your work easy to trust.',
-    description:
-      'Turn your experience into clear case studies, strong interviews, and effective collaboration.',
-    outcome: 'Strong evidence for your next role',
-    focus: 'Show decisions and outcomes.',
-    focusNote:
-      'Start applying as early as month 6–9. Use this phase to deepen the gaps that real interviews reveal.',
-  },
-];
+export { phases } from './phases.ts';
+
 const foundationTopics: Topic[] = [
   {
     id: 'dart-concurrency',
@@ -177,5 +106,32 @@ const foundationTopics: Topic[] = [
   },
 ];
 
-import { extraTopics } from './topics-extra';
-export const topics: Topic[] = [...foundationTopics, ...extraTopics];
+import { extraTopics } from './topics-extra.ts';
+import additions from './curriculum-additions.json' with { type: 'json' };
+import guideContent from './study-notes.json' with { type: 'json' };
+import { phases } from './phases.ts';
+
+const guides: Record<string, string> = guideContent;
+const relocated: Record<string, string> = {
+  'dart-concurrency': 'async',
+  'local-data': 'async',
+  'flutter-architecture': 'architecture',
+};
+// IDs and checklist positions are a persistence contract. Keep the originals
+// intact when moving topics; new lessons have their own stable IDs.
+const allTopics: Topic[] = [
+  ...foundationTopics,
+  ...extraTopics,
+  ...additions,
+].map((topic) => ({
+  ...topic,
+  phase: relocated[topic.id] ?? topic.phase,
+  guide: guides[topic.id],
+}));
+export const topics: Topic[] = phases.flatMap((phase) => {
+  const items = allTopics.filter((topic) => topic.phase === phase.id);
+  return [
+    ...items.filter((topic) => !topic.project),
+    ...items.filter((topic) => topic.project),
+  ];
+});

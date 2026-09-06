@@ -1,0 +1,338 @@
+[
+  {
+    "id": "dart-concurrency",
+    "steps": [
+      "Trace the event loop and explain a Future versus a Stream.",
+      "Handle errors, dispose subscriptions, and avoid stale requests.",
+      "Move a CPU-heavy task to an isolate and compare responsiveness."
+    ]
+  },
+  {
+    "id": "flutter-architecture",
+    "steps": [
+      "Separate a feature into UI and data responsibilities.",
+      "Use one state-management approach consistently.",
+      "Introduce repositories and inject dependencies where they help testing."
+    ]
+  },
+  {
+    "id": "flutter-testing",
+    "steps": [
+      "Write unit tests for business rules and failure cases.",
+      "Test widget states and user interactions.",
+      "Add an integration test for one critical flow."
+    ]
+  },
+  {
+    "id": "flutter-performance",
+    "steps": [
+      "Profile on a physical device in profile mode.",
+      "Inspect slow frames and rebuilds in DevTools.",
+      "Measure an improvement and document the before/after."
+    ]
+  },
+  {
+    "id": "local-data",
+    "steps": [
+      "Model local data and cache freshness.",
+      "Handle loading, empty, error, and stale-data states.",
+      "Test airplane mode and interrupted writes."
+    ]
+  },
+  {
+    "id": "accessible-flutter",
+    "steps": [
+      "Support large text without clipping content.",
+      "Label actions for screen readers and check focus order.",
+      "Adapt a feature for compact and large screens."
+    ]
+  },
+  {
+    "id": "flutter-milestone",
+    "steps": [
+      "Choose one feature with a real reliability or performance problem.",
+      "Refactor, test, and measure it on a physical device.",
+      "Write a short before/after explanation and record a demo."
+    ]
+  },
+  {
+    "id": "http-typescript",
+    "steps": [
+      "Review JavaScript objects, functions, modules, promises, and errors.",
+      "Use TypeScript unions, narrowing, and generics in practical code.",
+      "Inspect HTTP methods, status codes, headers, TLS, and JSON."
+    ]
+  },
+  {
+    "id": "node-api",
+    "steps": [
+      "Build a small REST API with one framework.",
+      "Validate requests and return consistent errors.",
+      "Add pagination, filtering, and request-level tests."
+    ]
+  },
+  {
+    "id": "sql-data-model",
+    "steps": [
+      "Model users, teams, and tasks with keys and constraints.",
+      "Write joins, aggregations, and transactions in SQL.",
+      "Use EXPLAIN to inspect a query and justify an index."
+    ]
+  },
+  {
+    "id": "auth-authorization",
+    "steps": [
+      "Explain sessions, access tokens, refresh tokens, and expiration.",
+      "Enforce ownership and roles on the server or with database policies.",
+      "Test attempts to read or modify another user’s records."
+    ]
+  },
+  {
+    "id": "schema-migrations",
+    "steps": [
+      "Write a repeatable schema migration.",
+      "Separate schema changes from large backfills.",
+      "Practice backup and restore in a development database."
+    ]
+  },
+  {
+    "id": "api-security",
+    "steps": [
+      "Use parameterized database queries and validate input.",
+      "Keep privileged credentials on the server.",
+      "Apply rate limits and test object-level authorization."
+    ]
+  },
+  {
+    "id": "backend-milestone",
+    "steps": [
+      "Build a team task or field-service API with PostgreSQL.",
+      "Add ownership checks, migrations, and integration tests.",
+      "Connect Flutter and document the API and setup steps."
+    ]
+  },
+  {
+    "id": "offline-sync",
+    "steps": [
+      "Queue local changes and assign stable request identifiers.",
+      "Define what happens when two devices edit the same record.",
+      "Test interruptions during upload and retry."
+    ]
+  },
+  {
+    "id": "background-work",
+    "steps": [
+      "Separate a user request from a background task.",
+      "Add bounded retries and a failed-job path.",
+      "Respect notification permissions and app lifecycle constraints."
+    ]
+  },
+  {
+    "id": "delivery-pipeline",
+    "steps": [
+      "Run linting and relevant tests for pull requests.",
+      "Separate development and production configuration.",
+      "Build release artifacts and document a rollback procedure."
+    ]
+  },
+  {
+    "id": "monitoring",
+    "steps": [
+      "Add contextual, non-sensitive logs and request identifiers.",
+      "Capture crashes and handled failures.",
+      "Track error rate and latency for a core journey."
+    ]
+  },
+  {
+    "id": "release-quality",
+    "steps": [
+      "Cover poor networks, expired sessions, and denied permissions.",
+      "Test schema and app-version compatibility.",
+      "Write a short incident response and rollback checklist."
+    ]
+  },
+  {
+    "id": "ai-coding-habits",
+    "steps": [
+      "Write acceptance criteria before requesting generated code.",
+      "Review diffs, dependencies, edge cases, and access rules.",
+      "Reproduce a bug and fix it without relying on the generated explanation."
+    ]
+  },
+  {
+    "id": "production-milestone",
+    "steps": [
+      "Release the Flutter product to a small test group.",
+      "Collect feedback with consent and fix the most costly problem.",
+      "Document release steps, metrics, and one incident or failure scenario."
+    ]
+  },
+  {
+    "id": "ai-foundations",
+    "steps": [
+      "Learn context windows, tokens, latency, and usage-based cost.",
+      "Call a model from the backend and validate structured results.",
+      "Handle timeouts, refusals, and malformed output explicitly."
+    ]
+  },
+  {
+    "id": "ai-mobile-ux",
+    "steps": [
+      "Stream useful partial output to Flutter.",
+      "Allow cancellation and prevent duplicate submissions.",
+      "Explain waiting, failure, and retry states in the interface."
+    ]
+  },
+  {
+    "id": "retrieval",
+    "steps": [
+      "Split documents into useful chunks and preserve source metadata.",
+      "Create embeddings and retrieve relevant passages.",
+      "Return source links and handle questions with no supporting evidence."
+    ]
+  },
+  {
+    "id": "tool-calling",
+    "steps": [
+      "Define a small typed tool schema.",
+      "Validate arguments and authorize each action server-side.",
+      "Require user confirmation before consequential actions."
+    ]
+  },
+  {
+    "id": "ai-evaluations",
+    "steps": [
+      "Create 30–50 realistic questions and expected behaviors.",
+      "Track answer correctness, groundedness, latency, and cost.",
+      "Compare a prompt or model change on the same evaluation set."
+    ]
+  },
+  {
+    "id": "ai-safety-cost",
+    "steps": [
+      "Keep private content scoped to the signed-in user.",
+      "Test malicious instructions inside retrieved documents.",
+      "Set quotas, request limits, timeouts, and graceful fallback behavior."
+    ]
+  },
+  {
+    "id": "ai-milestone",
+    "steps": [
+      "Choose one real user task and define success.",
+      "Implement retrieval or structured extraction with protected backend calls.",
+      "Publish a demo, evaluation results, and a cost/latency summary."
+    ]
+  },
+  {
+    "id": "system-design",
+    "steps": [
+      "Estimate users, traffic, latency goals, and storage needs.",
+      "Draw the major components and failure points.",
+      "Compare a simple design with a more complex alternative."
+    ]
+  },
+  {
+    "id": "caching-queues",
+    "steps": [
+      "Choose a cache strategy and define invalidation.",
+      "Explain at-least-once delivery and idempotent consumers.",
+      "Test stale reads, retries, and simultaneous updates."
+    ]
+  },
+  {
+    "id": "native-mobile",
+    "steps": [
+      "Pick one platform and learn its lifecycle and permission model.",
+      "Build a small platform-channel integration.",
+      "Test foreground, background, denial, and recovery cases."
+    ]
+  },
+  {
+    "id": "load-reliability",
+    "steps": [
+      "Define a realistic workload and acceptable latency.",
+      "Load-test an API with representative data.",
+      "Inspect queries, connections, and resource use before changing architecture."
+    ]
+  },
+  {
+    "id": "secure-product",
+    "steps": [
+      "Map assets, trust boundaries, and likely abuse cases.",
+      "Review authorization, file uploads, and sensitive logging.",
+      "Practice restoring data and responding to a leaked credential."
+    ]
+  },
+  {
+    "id": "maintainability",
+    "steps": [
+      "Refactor a troublesome area with behavior-preserving tests.",
+      "Write a concise architecture decision record.",
+      "Review a pull request and explain actionable feedback."
+    ]
+  },
+  {
+    "id": "systems-milestone",
+    "steps": [
+      "Write requirements and an architecture decision.",
+      "Implement mobile, backend, data, and any AI components needed.",
+      "Release, monitor, collect feedback, and write a case study."
+    ]
+  },
+  {
+    "id": "portfolio-evidence",
+    "steps": [
+      "Choose two projects with meaningful engineering decisions.",
+      "Document the problem, architecture, tests, outcomes, and limitations.",
+      "Create short demos and reproducible setup instructions."
+    ]
+  },
+  {
+    "id": "interview-fundamentals",
+    "steps": [
+      "Practice arrays, maps, stacks, queues, trees, and basic graphs.",
+      "Explain time/space complexity and test edge cases.",
+      "Solve selected problems aloud without autocomplete."
+    ]
+  },
+  {
+    "id": "mobile-interviews",
+    "steps": [
+      "Review Flutter rendering, state, async, memory, and lifecycle.",
+      "Practice SQL, HTTP, authorization, and system design questions.",
+      "Prepare stories about a difficult bug, incident, tradeoff, and collaboration."
+    ]
+  },
+  {
+    "id": "async-communication",
+    "steps": [
+      "Write concise progress updates with decisions and blockers.",
+      "Explain a design in a short document and a five-minute recording.",
+      "Practice clarifying requirements and responding to review feedback."
+    ]
+  },
+  {
+    "id": "open-source",
+    "steps": [
+      "Read contribution guidelines and reproduce a small issue.",
+      "Submit a focused fix or documentation improvement with evidence.",
+      "Respond to review feedback and keep the change scoped."
+    ]
+  },
+  {
+    "id": "job-search",
+    "steps": [
+      "Review current roles and record recurring requirements.",
+      "Tailor your CV with accurate project outcomes and relevant experience.",
+      "Track applications and interview gaps; revisit the roadmap monthly."
+    ]
+  },
+  {
+    "id": "career-milestone",
+    "steps": [
+      "Run two mock interviews and get specific feedback.",
+      "Finish your strongest project demo and case study.",
+      "Apply to suitable mobile/full-stack roles and revise your plan from results."
+    ]
+  }
+]

@@ -1,0 +1,948 @@
+[
+  {
+    "phase": "dart",
+    "id": "dart-oop",
+    "title": "OOP & class modifiers",
+    "summary": "Classes, abstraction, encapsulation, inheritance, and Dart 3 library boundaries.",
+    "hours": 6,
+    "steps": [
+      "Model a feature with classes, interfaces, and clear library boundaries.",
+      "Compare abstract, base, interface, final, and sealed classes.",
+      "Explain overriding, operator overloading, and exhaustive switches."
+    ],
+    "proof": "Design a result hierarchy and explain which subclasses another library may define.",
+    "resources": [
+      {
+        "title": "Dart class modifiers",
+        "url": "https://dart.dev/language/class-modifiers"
+      },
+      {
+        "title": "Classes",
+        "url": "https://dart.dev/language/classes"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-mixins",
+    "title": "Mixins & reusable behavior",
+    "summary": "Compose behavior with mixin, with, on, lifecycle contracts, and deliberate method resolution.",
+    "hours": 5,
+    "steps": [
+      "Write a logging mixin with an explicit host contract.",
+      "Trace two mixins, conflicting methods, and super calls.",
+      "Test behavior and dispose listeners/controllers safely."
+    ],
+    "proof": "Explain when a mixin helps and when a composed service is clearer.",
+    "resources": [
+      {
+        "title": "Dart mixins",
+        "url": "https://dart.dev/language/mixins"
+      },
+      {
+        "title": "ChangeNotifier",
+        "url": "https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-generics",
+    "title": "Generics & type-safe models",
+    "summary": "Reusable responses, repositories, functions, maps, and bounded type parameters.",
+    "hours": 4,
+    "steps": [
+      "Create ApiResponse<T> and a typed repository contract.",
+      "Use a generic function and an extends bound.",
+      "Remove raw List, raw generic types, and unnecessary dynamic."
+    ],
+    "proof": "Share one implementation across two model types without losing static checks.",
+    "resources": [
+      {
+        "title": "Generics",
+        "url": "https://dart.dev/language/generics"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-extensions",
+    "title": "Extensions & SDK helpers",
+    "summary": "Small helpers for String, nullable values, BuildContext, dates, and collections.",
+    "hours": 3,
+    "steps": [
+      "Write named extensions for a nullable string and BuildContext.",
+      "Explain static resolution and extension name conflicts.",
+      "Prefer existing SDK methods and keep business rules in services."
+    ],
+    "proof": "Use small, tested helpers without hiding navigation or business side effects.",
+    "resources": [
+      {
+        "title": "Extension methods",
+        "url": "https://dart.dev/language/extension-methods"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-function-types",
+    "title": "Typedefs & callback contracts",
+    "summary": "Precise function types for validators, buttons, value changes, and async work.",
+    "hours": 3,
+    "steps": [
+      "Define a FieldValidator typedef and a validator factory.",
+      "Use VoidCallback, ValueChanged<T>, and Future<void> Function().",
+      "Replace broad Function fields with exact signatures."
+    ],
+    "proof": "Make a reusable form/button API whose invalid callbacks fail static analysis.",
+    "resources": [
+      {
+        "title": "Functions",
+        "url": "https://dart.dev/language/functions"
+      },
+      {
+        "title": "Typedefs",
+        "url": "https://dart.dev/language/typedefs"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-enums",
+    "title": "Enhanced enums",
+    "summary": "Model statuses, API values, getters, methods, and explicit unknown values.",
+    "hours": 2,
+    "steps": [
+      "Add constant fields and a constructor to an enum.",
+      "Convert API strings without silently choosing a valid-but-wrong state.",
+      "Use enum values in a dropdown and exhaustive switch."
+    ],
+    "proof": "Keep labels, transport values, and behavior consistent for an app status.",
+    "resources": [
+      {
+        "title": "Enums",
+        "url": "https://dart.dev/language/enums"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-late",
+    "title": "late, lazy init & lifecycle",
+    "summary": "Initialize controllers and helpers safely; represent async data with explicit state.",
+    "hours": 2,
+    "steps": [
+      "Initialize and dispose a late final controller.",
+      "Compare eager initialization with a late initializer.",
+      "Replace risky asynchronous late fields with loading/data/error states."
+    ],
+    "proof": "Explain and prevent a LateInitializationError in a real widget.",
+    "resources": [
+      {
+        "title": "Variables and late",
+        "url": "https://dart.dev/language/variables"
+      },
+      {
+        "title": "State lifecycle",
+        "url": "https://api.flutter.dev/flutter/widgets/State-class.html"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-constructors",
+    "title": "const & factory constructors",
+    "summary": "Constant contexts, immutable objects, parsing, caching, and controlled creation.",
+    "hours": 3,
+    "steps": [
+      "Define a const constructor and compare const and runtime calls.",
+      "Write a validating factory from JSON or a map.",
+      "Explain a singleton factory and its testing tradeoffs."
+    ],
+    "proof": "Explain exactly when instances are reused and when a new object is created.",
+    "resources": [
+      {
+        "title": "Constructors",
+        "url": "https://dart.dev/language/constructors"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-records-patterns",
+    "title": "Records & patterns",
+    "summary": "Return multiple values, destructure records, and match object fields safely.",
+    "hours": 4,
+    "steps": [
+      "Use positional and named records as return values.",
+      "Destructure an object with named fields and shorthand patterns.",
+      "Handle success and failure variants exhaustively."
+    ],
+    "proof": "Replace a fragile tuple/map with a typed record and a readable pattern.",
+    "resources": [
+      {
+        "title": "Records",
+        "url": "https://dart.dev/language/records"
+      },
+      {
+        "title": "Pattern types",
+        "url": "https://dart.dev/language/pattern-types"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-cascades",
+    "title": "Cascades & object setup",
+    "summary": "Use .. and ?.. correctly and distinguish them from return-value chaining.",
+    "hours": 1,
+    "steps": [
+      "Initialize a controller or builder with a cascade.",
+      "Use a null-shorting cascade with ?.. only at its start.",
+      "Explain the receiver and result of each operation."
+    ],
+    "proof": "Refactor repeated object setup without changing its behavior.",
+    "resources": [
+      {
+        "title": "Operators and cascades",
+        "url": "https://dart.dev/language/operators"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-null-safety",
+    "title": "Null safety & defensive state",
+    "summary": "Nullable types, promotion, safe access, defaults, assertions, and loading states.",
+    "hours": 3,
+    "steps": [
+      "Use ?, ?., ??, and ??= with explicit meaning.",
+      "Promote a checked local variable instead of scattering !.",
+      "Model absent values and asynchronous failures deliberately."
+    ],
+    "proof": "Handle missing data without inventing a valid value or crashing.",
+    "resources": [
+      {
+        "title": "Sound null safety",
+        "url": "https://dart.dev/null-safety/understanding-null-safety"
+      }
+    ]
+  },
+  {
+    "phase": "dart",
+    "id": "dart-collections",
+    "title": "Collections, if & for",
+    "summary": "Transform, filter, aggregate, mutate, and build conditional widget lists.",
+    "hours": 3,
+    "steps": [
+      "Use collection if/for, map, where, expand, and typed fold.",
+      "Handle empty collections and failed searches safely.",
+      "Explain lazy iterables, toList, sorting, and mutation."
+    ],
+    "proof": "Build a filtered list UI and aggregate its data with predictable empty states.",
+    "resources": [
+      {
+        "title": "Collections",
+        "url": "https://dart.dev/language/collections"
+      },
+      {
+        "title": "Iterable API",
+        "url": "https://api.dart.dev/dart-core/Iterable-class.html"
+      }
+    ]
+  },
+  {
+    "phase": "async",
+    "id": "stream-transformers",
+    "title": "Streams & RxDart operators",
+    "summary": "Transform event streams and keep searches, subscriptions, and errors under control.",
+    "hours": 6,
+    "steps": [
+      "Compare single-subscription and broadcast streams.",
+      "Build a debounced search with distinct values and stale-result handling.",
+      "Test errors, completion, cancellation, and subscription disposal."
+    ],
+    "proof": "Demonstrate that an old response cannot replace a newer query.",
+    "resources": [
+      {
+        "title": "Dart streams",
+        "url": "https://dart.dev/libraries/async/using-streams"
+      },
+      {
+        "title": "RxDart",
+        "url": "https://pub.dev/packages/rxdart"
+      }
+    ]
+  },
+  {
+    "phase": "async",
+    "id": "local-db-toolbox",
+    "title": "Local databases & migrations",
+    "summary": "Compare SQLite/Drift, Hive, and Isar for durable on-device data.",
+    "hours": 8,
+    "steps": [
+      "Compare query needs, schema changes, platform support, and package maintenance.",
+      "Choose one local database and migrate populated test data.",
+      "Test app restart, interrupted writes, and backup/restore behavior."
+    ],
+    "proof": "Explain your storage choice and demonstrate a safe version upgrade.",
+    "resources": [
+      {
+        "title": "Flutter persistence",
+        "url": "https://docs.flutter.dev/cookbook/persistence"
+      },
+      {
+        "title": "Hive",
+        "url": "https://pub.dev/packages/hive"
+      },
+      {
+        "title": "Isar",
+        "url": "https://pub.dev/packages/isar"
+      },
+      {
+        "title": "Drift",
+        "url": "https://drift.simonbinder.eu/"
+      }
+    ]
+  },
+  {
+    "phase": "flutter",
+    "id": "widget-lifecycle",
+    "title": "Widget lifecycle & mounted",
+    "summary": "Understand initialization, updates, deactivation, disposal, and asynchronous work.",
+    "hours": 6,
+    "steps": [
+      "Trace StatelessWidget and StatefulWidget lifecycles.",
+      "Use initState, didChangeDependencies, didUpdateWidget, and dispose correctly.",
+      "Cancel owned work and check mounted before using a context after await."
+    ],
+    "proof": "Fix a lifecycle bug and explain who owns each resource.",
+    "resources": [
+      {
+        "title": "State lifecycle",
+        "url": "https://api.flutter.dev/flutter/widgets/State-class.html"
+      }
+    ]
+  },
+  {
+    "phase": "flutter",
+    "id": "context-keys",
+    "title": "BuildContext & widget identity",
+    "summary": "Inherited dependencies, Theme, navigation, ValueKey, and GlobalKey.",
+    "hours": 6,
+    "steps": [
+      "Trace how Theme and InheritedWidget dependencies are found.",
+      "Demonstrate state moving incorrectly in an unkeyed reordered list.",
+      "Choose a ValueKey and justify any GlobalKey usage."
+    ],
+    "proof": "Reorder stateful list items without attaching state to the wrong item.",
+    "resources": [
+      {
+        "title": "BuildContext",
+        "url": "https://api.flutter.dev/flutter/widgets/BuildContext-class.html"
+      },
+      {
+        "title": "Key",
+        "url": "https://api.flutter.dev/flutter/foundation/Key-class.html"
+      }
+    ]
+  },
+  {
+    "phase": "flutter",
+    "id": "flutter-localization",
+    "title": "Internationalization & localization",
+    "summary": "Localized messages, plural rules, dates, right-to-left layouts, and locale switching.",
+    "hours": 6,
+    "steps": [
+      "Generate localized strings from ARB files.",
+      "Handle plurals, interpolation, dates, and number formats.",
+      "Test long translations, RTL layout, and locale changes."
+    ],
+    "proof": "Complete a core flow in two languages without hard-coded user-facing strings.",
+    "resources": [
+      {
+        "title": "Flutter internationalization",
+        "url": "https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization"
+      }
+    ]
+  },
+  {
+    "phase": "flutter",
+    "id": "render-pipeline",
+    "title": "Layout, paint & compositing",
+    "summary": "Understand constraints, render objects, layers, rasterization, and frame cost.",
+    "hours": 8,
+    "steps": [
+      "Trace constraints down, sizes up, and parent positioning.",
+      "Distinguish build, layout, paint, compositing, and raster work.",
+      "Inspect a slow frame and explain the renderer used on that platform."
+    ],
+    "proof": "Locate whether a performance problem is in Dart/UI work or raster work.",
+    "resources": [
+      {
+        "title": "Flutter architectural overview",
+        "url": "https://docs.flutter.dev/resources/architectural-overview"
+      },
+      {
+        "title": "Impeller",
+        "url": "https://docs.flutter.dev/perf/impeller"
+      }
+    ]
+  },
+  {
+    "phase": "flutter",
+    "id": "custom-paint-animation",
+    "title": "Custom painting, clipping & animation",
+    "summary": "Create focused custom UI with CustomPainter, ClipPath, shaders, and animation controllers.",
+    "hours": 10,
+    "steps": [
+      "Draw and hit-test a simple CustomPainter visualization.",
+      "Compare implicit animation with an owned AnimationController.",
+      "Measure clipping/shader cost and respect reduced motion."
+    ],
+    "proof": "Ship a smooth custom interaction with correct disposal and semantics.",
+    "resources": [
+      {
+        "title": "Custom painting",
+        "url": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html"
+      },
+      {
+        "title": "Flutter animations",
+        "url": "https://docs.flutter.dev/ui/animations"
+      },
+      {
+        "title": "Fragment shaders",
+        "url": "https://docs.flutter.dev/ui/design/graphics/fragment-shaders"
+      }
+    ]
+  },
+  {
+    "phase": "flutter",
+    "id": "slivers-lazy-lists",
+    "title": "Slivers & lazy lists",
+    "summary": "Compose large scrollable screens without building every item at once.",
+    "hours": 8,
+    "steps": [
+      "Build with ListView.builder and stable keys.",
+      "Compose SliverAppBar, SliverList, and SliverGrid.",
+      "Measure scrolling and preserve position across navigation."
+    ],
+    "proof": "Scroll a large dataset smoothly with correct identity and pagination.",
+    "resources": [
+      {
+        "title": "Using slivers",
+        "url": "https://docs.flutter.dev/ui/layout/scrolling/slivers"
+      }
+    ]
+  },
+  {
+    "phase": "architecture",
+    "id": "state-toolbox",
+    "title": "Provider, GetX, Riverpod & BLoC",
+    "summary": "Compare state models, then build depth with one approach.",
+    "hours": 8,
+    "steps": [
+      "Compare local state, Provider/ChangeNotifier, GetX, Riverpod, and BLoC/Cubit.",
+      "Implement loading/data/error and dependency injection in one chosen tool.",
+      "Test state transitions without coupling business logic to widgets."
+    ],
+    "proof": "Explain your selected tool’s lifecycle, data flow, and testing tradeoffs.",
+    "resources": [
+      {
+        "title": "State-management approaches",
+        "url": "https://docs.flutter.dev/data-and-backend/state-mgmt/options"
+      },
+      {
+        "title": "Provider",
+        "url": "https://pub.dev/packages/provider"
+      },
+      {
+        "title": "GetX",
+        "url": "https://pub.dev/packages/get"
+      },
+      {
+        "title": "Riverpod",
+        "url": "https://riverpod.dev/"
+      },
+      {
+        "title": "BLoC",
+        "url": "https://bloclibrary.dev/"
+      }
+    ]
+  },
+  {
+    "phase": "architecture",
+    "id": "clean-solid",
+    "title": "Clean Architecture & SOLID",
+    "summary": "Entities, use cases, repositories, and dependency direction sized to the feature.",
+    "hours": 8,
+    "steps": [
+      "Separate domain rules from transport and widgets.",
+      "Apply SOLID to a real change without creating unnecessary layers.",
+      "Use a repository contract and a fake in a unit test."
+    ],
+    "proof": "Change a data source without rewriting business rules.",
+    "resources": [
+      {
+        "title": "Flutter architecture guide",
+        "url": "https://docs.flutter.dev/app-architecture/guide"
+      }
+    ]
+  },
+  {
+    "phase": "architecture",
+    "id": "state-restoration",
+    "title": "State restoration",
+    "summary": "Restore a user’s task after process death without confusing UI state with durable data.",
+    "hours": 6,
+    "steps": [
+      "Use RestorationMixin and restoration IDs for a small flow.",
+      "Distinguish transient UI state, restorable state, and persisted domain records.",
+      "Test process destruction and restoration on a device."
+    ],
+    "proof": "Recover form/navigation state without corrupting saved records.",
+    "resources": [
+      {
+        "title": "State restoration",
+        "url": "https://api.flutter.dev/flutter/widgets/RestorationMixin-mixin.html"
+      }
+    ]
+  },
+  {
+    "phase": "architecture",
+    "id": "flutter-codegen",
+    "title": "Freezed & JSON code generation",
+    "summary": "Generate predictable immutable models and serialization with explicit build steps.",
+    "hours": 6,
+    "steps": [
+      "Generate a model using freezed and json_serializable.",
+      "Handle unknown/missing JSON values and evolving fields.",
+      "Make generated-code updates repeatable in CI."
+    ],
+    "proof": "Regenerate a changed model and keep parsing behavior covered by tests.",
+    "resources": [
+      {
+        "title": "Freezed",
+        "url": "https://pub.dev/packages/freezed"
+      },
+      {
+        "title": "json_serializable",
+        "url": "https://pub.dev/packages/json_serializable"
+      }
+    ]
+  },
+  {
+    "phase": "architecture",
+    "id": "dependency-injection",
+    "title": "Dependency injection & lifetimes",
+    "summary": "Use constructor injection, get_it, or Riverpod to make ownership explicit.",
+    "hours": 5,
+    "steps": [
+      "Inject an API/repository through a constructor.",
+      "Compare get_it registrations with Riverpod providers and overrides.",
+      "Test scopes, disposal, and replacement with fakes."
+    ],
+    "proof": "Swap a service in tests and explain when each instance is created and disposed.",
+    "resources": [
+      {
+        "title": "get_it",
+        "url": "https://pub.dev/packages/get_it"
+      },
+      {
+        "title": "Riverpod",
+        "url": "https://riverpod.dev/"
+      },
+      {
+        "title": "Dependency injection guidance",
+        "url": "https://docs.flutter.dev/app-architecture/recommendations"
+      }
+    ]
+  },
+  {
+    "phase": "backend",
+    "id": "dio-retrofit",
+    "title": "REST clients with Dio & Retrofit",
+    "summary": "Typed requests, serialization, interceptors, cancellation, and consistent errors.",
+    "hours": 8,
+    "steps": [
+      "Build a typed API client with Dio or Retrofit.",
+      "Handle timeouts, auth refresh, cancellation, and transport errors.",
+      "Test malformed responses and avoid unsafe automatic retries."
+    ],
+    "proof": "Make a failed or expired-token request recover predictably.",
+    "resources": [
+      {
+        "title": "Dio",
+        "url": "https://pub.dev/packages/dio"
+      },
+      {
+        "title": "Retrofit",
+        "url": "https://pub.dev/packages/retrofit"
+      }
+    ]
+  },
+  {
+    "phase": "backend",
+    "id": "graphql-clients",
+    "title": "GraphQL, Ferry & Artemis",
+    "summary": "Understand schemas, generated operations, caching, and partial failures.",
+    "hours": 6,
+    "steps": [
+      "Write a query, mutation, and variables against a small schema.",
+      "Compare Ferry and Artemis support, code generation, and maintenance.",
+      "Handle partial errors, pagination, and cache updates."
+    ],
+    "proof": "Explain when GraphQL improves a Flutter feature over an existing REST API.",
+    "resources": [
+      {
+        "title": "GraphQL learning",
+        "url": "https://graphql.org/learn/"
+      },
+      {
+        "title": "Ferry",
+        "url": "https://ferrygraphql.com/"
+      },
+      {
+        "title": "Artemis",
+        "url": "https://pub.dev/packages/artemis"
+      }
+    ]
+  },
+  {
+    "phase": "backend",
+    "id": "realtime-clients",
+    "title": "WebSocket & Socket.IO",
+    "summary": "Reconnect, authenticate, order, and reconcile live updates.",
+    "hours": 8,
+    "steps": [
+      "Distinguish raw WebSocket from the Socket.IO protocol.",
+      "Implement reconnect/backoff and subscription cleanup.",
+      "Reconcile missed or duplicate events with a durable source of truth."
+    ],
+    "proof": "Recover a live screen after a network drop without duplicate records.",
+    "resources": [
+      {
+        "title": "Flutter WebSockets",
+        "url": "https://docs.flutter.dev/cookbook/networking/web-sockets"
+      },
+      {
+        "title": "Socket.IO",
+        "url": "https://socket.io/docs/v4/"
+      },
+      {
+        "title": "Dart Socket.IO client",
+        "url": "https://pub.dev/packages/socket_io_client"
+      }
+    ]
+  },
+  {
+    "phase": "backend",
+    "id": "backend-platforms",
+    "title": "Firebase, Supabase & Appwrite",
+    "summary": "Compare auth, database, storage, and functions against the same product requirements.",
+    "hours": 6,
+    "steps": [
+      "Compare the three platforms’ data models, access rules, and deployment model.",
+      "Build one authenticated CRUD/storage flow in a chosen platform.",
+      "Document permissions, usage limits, portability, and backup options."
+    ],
+    "proof": "Justify one platform choice and demonstrate blocked cross-user access.",
+    "resources": [
+      {
+        "title": "Firebase for Flutter",
+        "url": "https://firebase.google.com/docs/flutter/setup"
+      },
+      {
+        "title": "Supabase for Flutter",
+        "url": "https://supabase.com/docs/guides/getting-started/quickstarts/flutter"
+      },
+      {
+        "title": "Appwrite for Flutter",
+        "url": "https://appwrite.io/docs/quick-starts/flutter"
+      }
+    ]
+  },
+  {
+    "phase": "backend",
+    "id": "grpc-protobuf",
+    "title": "gRPC & Protocol Buffers",
+    "summary": "Typed contracts, code generation, streaming, and compatibility.",
+    "hours": 6,
+    "steps": [
+      "Define a small protobuf service and generate Dart bindings.",
+      "Handle status codes, deadlines, cancellation, and authentication.",
+      "Compare mobile transport with browser/gRPC-Web constraints."
+    ],
+    "proof": "Explain where gRPC fits and evolve a message without breaking clients.",
+    "resources": [
+      {
+        "title": "gRPC Dart basics",
+        "url": "https://grpc.io/docs/languages/dart/basics/"
+      }
+    ]
+  },
+  {
+    "phase": "backend",
+    "id": "mongodb-modeling",
+    "title": "MongoDB alongside PostgreSQL",
+    "summary": "Compare document and relational models using real access patterns.",
+    "hours": 6,
+    "steps": [
+      "Model the same feature as relational tables and MongoDB documents.",
+      "Compare embedding, references, indexes, consistency, and migrations.",
+      "Keep database credentials on a backend and benchmark a representative query."
+    ],
+    "proof": "Choose a data model from requirements rather than framework familiarity.",
+    "resources": [
+      {
+        "title": "MongoDB documentation",
+        "url": "https://www.mongodb.com/docs/manual/"
+      },
+      {
+        "title": "PostgreSQL tutorial",
+        "url": "https://www.postgresql.org/docs/current/tutorial.html"
+      }
+    ]
+  },
+  {
+    "phase": "production",
+    "id": "golden-tests",
+    "title": "Golden tests & visual regression",
+    "summary": "Make important visual expectations repeatable without brittle snapshots everywhere.",
+    "hours": 5,
+    "steps": [
+      "Create a focused golden test for a stable component.",
+      "Control fonts, theme, size, locale, and test environment.",
+      "Review changes and combine visual checks with behavior tests."
+    ],
+    "proof": "Catch a deliberate visual regression and explain legitimate golden updates.",
+    "resources": [
+      {
+        "title": "Flutter testing",
+        "url": "https://docs.flutter.dev/testing/overview"
+      },
+      {
+        "title": "matchesGoldenFile",
+        "url": "https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html"
+      }
+    ]
+  },
+  {
+    "phase": "production",
+    "id": "flutter-flavors",
+    "title": "Flavors & environment configuration",
+    "summary": "Separate development, staging, and production builds safely.",
+    "hours": 5,
+    "steps": [
+      "Configure application IDs, names, icons, and endpoints per environment.",
+      "Keep secrets out of compiled Dart values and source control.",
+      "Build and verify each flavor in CI."
+    ],
+    "proof": "Install staging and production side by side and identify their backend connections.",
+    "resources": [
+      {
+        "title": "Flutter flavors",
+        "url": "https://docs.flutter.dev/deployment/flavors"
+      }
+    ]
+  },
+  {
+    "phase": "production",
+    "id": "shorebird-updates",
+    "title": "Shorebird & patch delivery",
+    "summary": "Understand what a code patch can change and how to release and recover it safely.",
+    "hours": 5,
+    "steps": [
+      "Evaluate supported targets, update limitations, and current store requirements.",
+      "Practice release, patch, staged rollout, and recovery in a test app.",
+      "Track patch versions alongside crash and performance reports."
+    ],
+    "proof": "Explain when a patch is suitable and when a full store release is required.",
+    "resources": [
+      {
+        "title": "Shorebird documentation",
+        "url": "https://docs.shorebird.dev/"
+      }
+    ]
+  },
+  {
+    "phase": "production",
+    "id": "biometric-auth",
+    "title": "Biometric authentication",
+    "summary": "Use local device verification alongside secure sessions and server authorization.",
+    "hours": 5,
+    "steps": [
+      "Integrate local_auth with fallback and cancellation states.",
+      "Distinguish device verification from server identity/authorization.",
+      "Test unavailable biometrics, enrollment changes, and a locked device."
+    ],
+    "proof": "Protect a local action without treating biometrics as a server-issued login token.",
+    "resources": [
+      {
+        "title": "local_auth",
+        "url": "https://pub.dev/packages/local_auth"
+      }
+    ]
+  },
+  {
+    "phase": "ai",
+    "id": "on-device-ml",
+    "title": "On-device ML: LiteRT & ONNX",
+    "summary": "Compare local inference with hosted AI APIs using quality, privacy, latency, and device cost.",
+    "hours": 12,
+    "steps": [
+      "Run a small TensorFlow Lite/LiteRT or ONNX model on a target device.",
+      "Match preprocessing, tensor shapes, quantization, and postprocessing.",
+      "Compare latency, memory, battery, quality, and a hosted fallback."
+    ],
+    "proof": "Ship one measured inference flow with appropriate data handling and fallback.",
+    "resources": [
+      {
+        "title": "Google AI Edge LiteRT",
+        "url": "https://ai.google.dev/edge/litert"
+      },
+      {
+        "title": "ONNX Runtime mobile",
+        "url": "https://onnxruntime.ai/docs/tutorials/mobile/"
+      }
+    ]
+  },
+  {
+    "phase": "systems",
+    "id": "web-desktop-wasm",
+    "title": "Flutter Web, Desktop & Wasm",
+    "summary": "Ship across platforms with deliberate renderer, compiler, input, and plugin decisions.",
+    "hours": 10,
+    "steps": [
+      "Build a desktop target and a Flutter web target, including Wasm where compatible.",
+      "Audit plugin support, JS interop, file access, keyboard input, and accessibility.",
+      "Measure startup, bundle size, rendering, and distribution requirements."
+    ],
+    "proof": "Document platform differences and ship the same feature with appropriate behavior.",
+    "resources": [
+      {
+        "title": "Flutter platforms",
+        "url": "https://docs.flutter.dev/platform-integration"
+      },
+      {
+        "title": "Flutter Wasm",
+        "url": "https://docs.flutter.dev/platform-integration/web/wasm"
+      }
+    ]
+  },
+  {
+    "phase": "advanced",
+    "id": "dart-ffi",
+    "title": "Dart FFI & native libraries",
+    "summary": "Integrate a small C/C++ library with explicit ownership and ABI boundaries.",
+    "hours": 10,
+    "steps": [
+      "Bind a small native function and define its supported targets.",
+      "Handle pointer lifetime, allocation, strings, and errors.",
+      "Measure call overhead and move blocking work off the UI path."
+    ],
+    "proof": "Call native code safely and explain when FFI is better suited than platform channels.",
+    "resources": [
+      {
+        "title": "Dart FFI",
+        "url": "https://dart.dev/interop/c-interop"
+      }
+    ]
+  },
+  {
+    "phase": "advanced",
+    "id": "embedded-edge",
+    "title": "Embedded Dart & edge devices",
+    "summary": "Explore Raspberry Pi, IoT, offline operation, and device-specific runtimes.",
+    "hours": 12,
+    "steps": [
+      "Check OS/CPU/runtime/embedder support for the chosen device.",
+      "Build a small local sensor or inference prototype.",
+      "Test startup, intermittent connectivity, updates, and resource limits."
+    ],
+    "proof": "Explain runtime support and operate a small device prototype reliably.",
+    "resources": [
+      {
+        "title": "Dart native platform",
+        "url": "https://dart.dev/overview#native-platform"
+      },
+      {
+        "title": "Raspberry Pi documentation",
+        "url": "https://www.raspberrypi.com/documentation/"
+      }
+    ]
+  },
+  {
+    "phase": "advanced",
+    "id": "mobile-ar",
+    "title": "ARKit & ARCore integration",
+    "summary": "Explore a small augmented-reality feature and its native-platform constraints.",
+    "hours": 12,
+    "steps": [
+      "Compare device support, tracking, anchors, and permissions.",
+      "Prototype a single AR interaction through a maintained integration or native code.",
+      "Test interruption, tracking loss, thermal limits, and accessibility fallback."
+    ],
+    "proof": "Demonstrate a constrained AR feature and explain its platform limits.",
+    "resources": [
+      {
+        "title": "Apple ARKit",
+        "url": "https://developer.apple.com/augmented-reality/arkit/"
+      },
+      {
+        "title": "Google ARCore",
+        "url": "https://developers.google.com/ar"
+      }
+    ]
+  },
+  {
+    "phase": "advanced",
+    "id": "rive-lottie-flame",
+    "title": "Rive, Lottie & Flame",
+    "summary": "Choose interactive animation, playback, or game tooling for a concrete use case.",
+    "hours": 10,
+    "steps": [
+      "Compare Rive state machines, Lottie animation playback, and Flame game loops.",
+      "Build one small interaction using the appropriate tool.",
+      "Measure asset size, frame cost, input behavior, and reduced-motion fallback."
+    ],
+    "proof": "Explain why the chosen tool fits and ship a measured prototype.",
+    "resources": [
+      {
+        "title": "Rive Flutter runtime",
+        "url": "https://rive.app/docs/runtimes/flutter/flutter"
+      },
+      {
+        "title": "Lottie for Flutter",
+        "url": "https://pub.dev/packages/lottie"
+      },
+      {
+        "title": "Flame documentation",
+        "url": "https://docs.flame-engine.org/latest/"
+      }
+    ]
+  },
+  {
+    "phase": "advanced",
+    "id": "web3-wallets",
+    "title": "WalletConnect & Ethers.dart",
+    "summary": "Explore wallet connections, signing, chain state, and transaction UX on a test network.",
+    "hours": 10,
+    "steps": [
+      "Review WalletConnect/Reown and the current Ethers.dart client’s compatibility.",
+      "Connect a test wallet and distinguish a message signature from a transaction.",
+      "Handle chain/account changes, rejection, and pending/failed transactions."
+    ],
+    "proof": "Explain the trust boundaries and demonstrate a test-network-only interaction.",
+    "resources": [
+      {
+        "title": "Reown documentation",
+        "url": "https://docs.reown.com/"
+      },
+      {
+        "title": "Ethers.dart",
+        "url": "https://pub.dev/packages/ethers"
+      }
+    ]
+  }
+]

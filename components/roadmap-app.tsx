@@ -47,12 +47,13 @@ import {
 } from '@/components/ui/alert-dialog';
 import { AuthDialog } from '@/components/auth-dialog';
 import { ScheduleDialog } from '@/components/schedule-dialog';
+import { StudyGuide } from '@/components/study-guide';
 import { isCloudConfigured } from '@/lib/supabase';
 import { phases, topics } from '@/lib/roadmap';
 import {
   emptyEntry,
   localDate,
-  phaseDates,
+  phaseWindow,
   statusLabels,
   statuses,
   summarize,
@@ -66,7 +67,7 @@ export default function Home() {
   const roadmap = useRoadmap();
   const { user, entries, settings, ready, syncing, error, refresh, saveEntry } =
     roadmap;
-  const [phaseId, setPhaseId] = useState('flutter');
+  const [phaseId, setPhaseId] = useState('dart');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [draft, setDraft] = useState<ProgressEntry>(emptyEntry(''));
   const [baseline, setBaseline] = useState('');
@@ -252,7 +253,7 @@ export default function Home() {
         <div className="page-heading">
           <div>
             <div className="eyebrow">
-              <Compass size={15} /> YOUR NEXT 24 MONTHS
+              <Compass size={15} /> YOUR NEXT 24 MONTHS + OPTIONAL EXPLORATIONS
             </div>
             <h1>My learning roadmap</h1>
             <p>
@@ -304,6 +305,29 @@ export default function Home() {
             </button>
           </div>
         )}
+        <div className="phase-navigation">
+          <p>
+            {phases.length} stages · {topics.length} trackable topics ·{' '}
+            {topics.filter((topic) => topic.guide).length} study guides
+          </p>
+          <label htmlFor="phase-jump">
+            Jump to stage
+            <select
+              id="phase-jump"
+              value={phaseId}
+              onChange={(event) => {
+                setPhaseId(event.target.value);
+                setFilter('all');
+              }}
+            >
+              {phases.map((phase, index) => (
+                <option key={phase.id} value={phase.id}>
+                  {index + 1}. {phase.shortTitle}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
         <Tabs
           value={phaseId}
           onValueChange={(value) => {
@@ -378,14 +402,15 @@ export default function Home() {
                         {stats.done} OF {stats.total} COMPLETED
                       </span>
                       <span>
-                        {settings.start_date
-                          ? phaseDates(settings.start_date, index)
+                        {settings.start_date && phase.months
+                          ? phaseWindow(settings.start_date, ...phase.months)
                           : phase.period}
                       </span>
                     </div>
                     <div className="phase-intro">
                       <span className="phase-kicker">
-                        PHASE {String(index + 1).padStart(2, '0')} ·{' '}
+                        {phase.optional ? 'OPTIONAL STAGE' : 'STAGE'}{' '}
+                        {String(index + 1).padStart(2, '0')} ·{' '}
                         {phase.period.toUpperCase()}
                       </span>
                       <h2>{phase.title}</h2>
@@ -399,9 +424,16 @@ export default function Home() {
                           )}{' '}
                           estimated hours
                         </span>
-                        <span>
-                          <Flag size={14} />1 practical milestone
-                        </span>
+                        {phaseTopics.some((topic) => topic.project) && (
+                          <span>
+                            <Flag size={14} />
+                            {
+                              phaseTopics.filter((topic) => topic.project)
+                                .length
+                            }{' '}
+                            practical milestone
+                          </span>
+                        )}
                       </div>
                     </div>
                     <div className="board-controls">
@@ -680,6 +712,18 @@ export default function Home() {
                 </div>
                 <h3>Know it when you can…</h3>
                 <p className="proof-box">{selected.proof}</p>
+                {selected.guide && (
+                  <section className="lesson-section" aria-label="Study guide">
+                    <h3>Study guide</h3>
+                    <details className="lesson-details" key={selected.id}>
+                      <summary>
+                        <BookOpen size={17} /> Read lesson, examples & reference
+                        notes
+                      </summary>
+                      <StudyGuide content={selected.guide} />
+                    </details>
+                  </section>
+                )}
                 <h3>Start learning</h3>
                 {selected.resources.map((r) => (
                   <a

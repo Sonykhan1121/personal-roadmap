@@ -1,0 +1,467 @@
+{
+  "checkedOn": "2026-09-06",
+  "resources": [
+    {
+      "url": "https://ai.google.dev/edge/litert",
+      "status": 200,
+      "resolvedUrl": "https://developers.google.com/edge/litert"
+    },
+    {
+      "url": "https://api.dart.dev/dart-core/Iterable-class.html",
+      "status": 200,
+      "resolvedUrl": "https://api.dart.dev/dart-core/Iterable-class.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/foundation/Key-class.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/foundation/Key-class.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/widgets/BuildContext-class.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/widgets/BuildContext-class.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/widgets/RestorationMixin-mixin.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/widgets/RestorationMixin-mixin.html"
+    },
+    {
+      "url": "https://api.flutter.dev/flutter/widgets/State-class.html",
+      "status": 200,
+      "resolvedUrl": "https://api.flutter.dev/flutter/widgets/State-class.html"
+    },
+    {
+      "url": "https://appwrite.io/docs/quick-starts/flutter",
+      "status": 200,
+      "resolvedUrl": "https://appwrite.io/docs/quick-starts/flutter"
+    },
+    {
+      "url": "https://bloclibrary.dev/",
+      "status": 200,
+      "resolvedUrl": "https://bloclibrary.dev/"
+    },
+    {
+      "url": "https://dart.dev/interop/c-interop",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/interop/c-interop"
+    },
+    {
+      "url": "https://dart.dev/language/class-modifiers",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/class-modifiers"
+    },
+    {
+      "url": "https://dart.dev/language/classes",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/classes"
+    },
+    {
+      "url": "https://dart.dev/language/collections",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/collections"
+    },
+    {
+      "url": "https://dart.dev/language/constructors",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/constructors"
+    },
+    {
+      "url": "https://dart.dev/language/enums",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/enums"
+    },
+    {
+      "url": "https://dart.dev/language/extension-methods",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/extension-methods"
+    },
+    {
+      "url": "https://dart.dev/language/functions",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/functions"
+    },
+    {
+      "url": "https://dart.dev/language/generics",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/generics"
+    },
+    {
+      "url": "https://dart.dev/language/mixins",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/mixins"
+    },
+    {
+      "url": "https://dart.dev/language/operators",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/operators"
+    },
+    {
+      "url": "https://dart.dev/language/pattern-types",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/pattern-types"
+    },
+    {
+      "url": "https://dart.dev/language/records",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/records"
+    },
+    {
+      "url": "https://dart.dev/language/typedefs",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/typedefs"
+    },
+    {
+      "url": "https://dart.dev/language/variables",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/language/variables"
+    },
+    {
+      "url": "https://dart.dev/libraries/async/using-streams",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/libraries/async/using-streams"
+    },
+    {
+      "url": "https://dart.dev/null-safety/understanding-null-safety",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/null-safety/understanding-null-safety"
+    },
+    {
+      "url": "https://dart.dev/overview#native-platform",
+      "status": 200,
+      "resolvedUrl": "https://dart.dev/overview#native-platform"
+    },
+    {
+      "url": "https://developer.apple.com/augmented-reality/arkit/",
+      "status": 200,
+      "resolvedUrl": "https://developer.apple.com/documentation/ARKit"
+    },
+    {
+      "url": "https://developers.google.com/ar",
+      "status": 200,
+      "resolvedUrl": "https://developers.google.com/ar"
+    },
+    {
+      "url": "https://docs.codemagic.io/flutter-configuration/flutter-projects/",
+      "status": 200,
+      "resolvedUrl": "https://docs.codemagic.io/flutter-configuration/flutter-projects/"
+    },
+    {
+      "url": "https://docs.fastlane.tools/getting-started/cross-platform/flutter/",
+      "status": 200,
+      "resolvedUrl": "https://docs.fastlane.tools/getting-started/cross-platform/flutter/"
+    },
+    {
+      "url": "https://docs.flame-engine.org/latest/",
+      "status": 200,
+      "resolvedUrl": "https://docs.flame-engine.org/latest/"
+    },
+    {
+      "url": "https://docs.flutter.dev/app-architecture/guide",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/app-architecture/guide"
+    },
+    {
+      "url": "https://docs.flutter.dev/app-architecture/recommendations",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/app-architecture/recommendations"
+    },
+    {
+      "url": "https://docs.flutter.dev/cookbook/networking/web-sockets",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/cookbook/networking/web-sockets"
+    },
+    {
+      "url": "https://docs.flutter.dev/cookbook/persistence",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/cookbook/persistence"
+    },
+    {
+      "url": "https://docs.flutter.dev/data-and-backend/state-mgmt/options",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/data-and-backend/state-mgmt/options"
+    },
+    {
+      "url": "https://docs.flutter.dev/deployment",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/deployment"
+    },
+    {
+      "url": "https://docs.flutter.dev/deployment/flavors",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/deployment/flavors"
+    },
+    {
+      "url": "https://docs.flutter.dev/deployment/obfuscate",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/deployment/obfuscate"
+    },
+    {
+      "url": "https://docs.flutter.dev/packages-and-plugins/developing-packages",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/packages-and-plugins/developing-packages"
+    },
+    {
+      "url": "https://docs.flutter.dev/perf/impeller",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/perf/impeller"
+    },
+    {
+      "url": "https://docs.flutter.dev/platform-integration",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/platform-integration"
+    },
+    {
+      "url": "https://docs.flutter.dev/platform-integration/platform-channels",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/platform-integration/platform-channels"
+    },
+    {
+      "url": "https://docs.flutter.dev/platform-integration/web/wasm",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/platform-integration/web/wasm"
+    },
+    {
+      "url": "https://docs.flutter.dev/resources/architectural-overview",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/resources/architectural-overview"
+    },
+    {
+      "url": "https://docs.flutter.dev/testing/overview",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/testing/overview"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/ui/internationalization"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/animations",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/ui/animations"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/design/graphics/fragment-shaders",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/ui/design/graphics/fragment-shaders"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/layout/scrolling/slivers",
+      "status": 200,
+      "resolvedUrl": "https://docs.flutter.dev/ui/layout/scrolling/slivers"
+    },
+    {
+      "url": "https://docs.github.com/en/actions",
+      "status": 200,
+      "resolvedUrl": "https://docs.github.com/en/actions"
+    },
+    {
+      "url": "https://docs.reown.com/",
+      "status": 200,
+      "resolvedUrl": "https://docs.reown.com/"
+    },
+    {
+      "url": "https://docs.sentry.io/platforms/dart/guides/flutter/",
+      "status": 200,
+      "resolvedUrl": "https://docs.sentry.io/platforms/dart/guides/flutter/"
+    },
+    {
+      "url": "https://docs.shorebird.dev/",
+      "status": 200,
+      "resolvedUrl": "https://docs.shorebird.dev/"
+    },
+    {
+      "url": "https://drift.simonbinder.eu/",
+      "status": 200,
+      "resolvedUrl": "https://drift.simonbinder.eu/"
+    },
+    {
+      "url": "https://fastapi.tiangolo.com/",
+      "status": 200,
+      "resolvedUrl": "https://fastapi.tiangolo.com/"
+    },
+    {
+      "url": "https://ferrygraphql.com/",
+      "status": 200,
+      "resolvedUrl": "https://ferrygraphql.com/"
+    },
+    {
+      "url": "https://firebase.google.com/docs/app-distribution",
+      "status": 200,
+      "resolvedUrl": "https://firebase.google.com/docs/app-distribution"
+    },
+    {
+      "url": "https://firebase.google.com/docs/flutter/setup",
+      "status": 200,
+      "resolvedUrl": "https://firebase.google.com/docs/flutter/setup"
+    },
+    {
+      "url": "https://firebase.google.com/docs/perf-mon/flutter/get-started",
+      "status": 200,
+      "resolvedUrl": "https://firebase.google.com/docs/perf-mon/flutter/get-started"
+    },
+    {
+      "url": "https://graphql.org/learn/",
+      "status": 200,
+      "resolvedUrl": "https://graphql.org/learn/"
+    },
+    {
+      "url": "https://grpc.io/docs/languages/dart/basics/",
+      "status": 200,
+      "resolvedUrl": "https://grpc.io/docs/languages/dart/basics/"
+    },
+    {
+      "url": "https://onnxruntime.ai/docs/tutorials/mobile/",
+      "status": 200,
+      "resolvedUrl": "https://onnxruntime.ai/docs/tutorials/mobile/"
+    },
+    {
+      "url": "https://pub.dev/packages/artemis",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/artemis"
+    },
+    {
+      "url": "https://pub.dev/packages/dio",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/dio"
+    },
+    {
+      "url": "https://pub.dev/packages/ethers",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/ethers"
+    },
+    {
+      "url": "https://pub.dev/packages/flutter_background_service",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/flutter_background_service"
+    },
+    {
+      "url": "https://pub.dev/packages/flutter_local_notifications",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/flutter_local_notifications"
+    },
+    {
+      "url": "https://pub.dev/packages/flutter_secure_storage",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/flutter_secure_storage"
+    },
+    {
+      "url": "https://pub.dev/packages/freezed",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/freezed"
+    },
+    {
+      "url": "https://pub.dev/packages/get",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/get"
+    },
+    {
+      "url": "https://pub.dev/packages/get_it",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/get_it"
+    },
+    {
+      "url": "https://pub.dev/packages/hive",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/hive"
+    },
+    {
+      "url": "https://pub.dev/packages/isar",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/isar"
+    },
+    {
+      "url": "https://pub.dev/packages/json_serializable",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/json_serializable"
+    },
+    {
+      "url": "https://pub.dev/packages/local_auth",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/local_auth"
+    },
+    {
+      "url": "https://pub.dev/packages/lottie",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/lottie"
+    },
+    {
+      "url": "https://pub.dev/packages/provider",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/provider"
+    },
+    {
+      "url": "https://pub.dev/packages/retrofit",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/retrofit"
+    },
+    {
+      "url": "https://pub.dev/packages/rxdart",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/rxdart"
+    },
+    {
+      "url": "https://pub.dev/packages/socket_io_client",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/socket_io_client"
+    },
+    {
+      "url": "https://pub.dev/packages/workmanager",
+      "status": 200,
+      "resolvedUrl": "https://pub.dev/packages/workmanager"
+    },
+    {
+      "url": "https://rive.app/docs/runtimes/flutter/flutter",
+      "status": null,
+      "error": "<urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)>",
+      "followUpVerification": "Official documentation loaded successfully through the web source reader on 2026-09-06. Original local probe restriction retained above."
+    },
+    {
+      "url": "https://riverpod.dev/",
+      "status": 200,
+      "resolvedUrl": "https://riverpod.dev/"
+    },
+    {
+      "url": "https://socket.io/docs/v4/",
+      "status": 200,
+      "resolvedUrl": "https://socket.io/docs/v4/"
+    },
+    {
+      "url": "https://supabase.com/docs/guides/getting-started/quickstarts/flutter",
+      "status": 200,
+      "resolvedUrl": "https://supabase.com/docs/guides/getting-started/quickstarts/flutter"
+    },
+    {
+      "url": "https://www.mongodb.com/docs/manual/",
+      "status": 200,
+      "resolvedUrl": "https://www.mongodb.com/docs/manual/"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/tutorial.html",
+      "status": 200,
+      "resolvedUrl": "https://www.postgresql.org/docs/current/tutorial.html"
+    },
+    {
+      "url": "https://www.raspberrypi.com/documentation/",
+      "status": 403,
+      "error": "HTTP Error 403: Forbidden",
+      "followUpVerification": "Official documentation loaded successfully through the web source reader on 2026-09-06. Original local probe restriction retained above."
+    }
+  ]
+}
