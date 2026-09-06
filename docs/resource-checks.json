@@ -1,0 +1,359 @@
+{
+  "checked": "2026-09-06",
+  "results": [
+    {
+      "url": "https://adr.github.io/",
+      "status": 200,
+      "final_url": "https://adr.github.io/"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/embeddings",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs/embeddings"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs/function-calling"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/safety-guidance",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs/safety-guidance"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs/structured-output"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/text-generation",
+      "status": 200,
+      "final_url": "https://ai.google.dev/gemini-api/docs/text-generation"
+    },
+    {
+      "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview",
+      "status": 200,
+      "final_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-overview"
+    },
+    {
+      "url": "https://dart.dev/language/concurrency",
+      "status": 200,
+      "final_url": "https://dart.dev/language/concurrency"
+    },
+    {
+      "url": "https://dart.dev/libraries/async/async-await",
+      "status": 200,
+      "final_url": "https://dart.dev/libraries/async/async-await"
+    },
+    {
+      "url": "https://developer.android.com/guide",
+      "status": 200,
+      "final_url": "https://developer.android.com/get-started/overview"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent",
+      "status": 200,
+      "final_url": "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview",
+      "status": 200,
+      "final_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"
+    },
+    {
+      "url": "https://developers.google.com/tech-writing",
+      "status": 200,
+      "final_url": "https://developers.google.com/tech-writing"
+    },
+    {
+      "url": "https://docs.flutter.dev/app-architecture/case-study",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/app-architecture/case-study"
+    },
+    {
+      "url": "https://docs.flutter.dev/app-architecture/design-patterns/offline-first",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/app-architecture/design-patterns/offline-first"
+    },
+    {
+      "url": "https://docs.flutter.dev/app-architecture/recommendations",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/app-architecture/recommendations"
+    },
+    {
+      "url": "https://docs.flutter.dev/cookbook/persistence/sqlite",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/cookbook/persistence/sqlite"
+    },
+    {
+      "url": "https://docs.flutter.dev/data-and-backend/networking",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/data-and-backend/networking"
+    },
+    {
+      "url": "https://docs.flutter.dev/deployment",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/deployment"
+    },
+    {
+      "url": "https://docs.flutter.dev/packages-and-plugins/background-processes",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/packages-and-plugins/background-processes"
+    },
+    {
+      "url": "https://docs.flutter.dev/perf",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/perf"
+    },
+    {
+      "url": "https://docs.flutter.dev/platform-integration/platform-channels",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/platform-integration/platform-channels"
+    },
+    {
+      "url": "https://docs.flutter.dev/resources/architectural-overview",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/resources/architectural-overview"
+    },
+    {
+      "url": "https://docs.flutter.dev/testing/integration-tests",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/testing/integration-tests"
+    },
+    {
+      "url": "https://docs.flutter.dev/testing/overview",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/testing/overview"
+    },
+    {
+      "url": "https://docs.flutter.dev/tools/devtools/performance",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/tools/devtools/performance"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/accessibility-and-internationalization/accessibility",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/ui/accessibility"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/adaptive-responsive",
+      "status": 200,
+      "final_url": "https://docs.flutter.dev/ui/adaptive-responsive"
+    },
+    {
+      "url": "https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile",
+      "status": 200,
+      "final_url": "https://docs.github.com/en/account-and-profile/how-tos"
+    },
+    {
+      "url": "https://docs.github.com/en/actions",
+      "status": 200,
+      "final_url": "https://docs.github.com/en/actions"
+    },
+    {
+      "url": "https://docs.github.com/en/pull-requests",
+      "status": 200,
+      "final_url": "https://docs.github.com/en/pull-requests"
+    },
+    {
+      "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+      "status": 200,
+      "final_url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"
+    },
+    {
+      "url": "https://dora.dev/research/2025/dora-report/",
+      "status": 200,
+      "final_url": "https://dora.dev/research/2025/dora-report/"
+    },
+    {
+      "url": "https://expressjs.com/en/advanced/best-practice-security.html",
+      "status": 200,
+      "final_url": "https://expressjs.com/en/advanced/best-practice-security/"
+    },
+    {
+      "url": "https://expressjs.com/en/guide/routing.html",
+      "status": 200,
+      "final_url": "https://expressjs.com/en/guide/routing/"
+    },
+    {
+      "url": "https://firebase.google.com/docs/app-distribution",
+      "status": 200,
+      "final_url": "https://firebase.google.com/docs/app-distribution"
+    },
+    {
+      "url": "https://firebase.google.com/docs/cloud-messaging/flutter/client",
+      "status": 200,
+      "final_url": "https://firebase.google.com/docs/cloud-messaging/flutter/get-started"
+    },
+    {
+      "url": "https://firebase.google.com/docs/crashlytics/get-started?platform=flutter",
+      "status": 200,
+      "final_url": "https://firebase.google.com/docs/crashlytics/get-started?platform=flutter"
+    },
+    {
+      "url": "https://genai.owasp.org/",
+      "status": 200,
+      "final_url": "https://genai.owasp.org/"
+    },
+    {
+      "url": "https://google.github.io/eng-practices/",
+      "status": 200,
+      "final_url": "https://google.github.io/eng-practices/"
+    },
+    {
+      "url": "https://google.github.io/eng-practices/review/",
+      "status": 200,
+      "final_url": "https://google.github.io/eng-practices/review/"
+    },
+    {
+      "url": "https://grafana.com/docs/k6/latest/",
+      "status": 200,
+      "final_url": "https://grafana.com/docs/k6/latest/"
+    },
+    {
+      "url": "https://leetcode.com/problemset/",
+      "status": 403
+    },
+    {
+      "url": "https://mas.owasp.org/",
+      "status": 200,
+      "final_url": "https://mas.owasp.org/"
+    },
+    {
+      "url": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+      "status": 200,
+      "final_url": "https://nodejs.org/learn/getting-started/introduction-to-nodejs"
+    },
+    {
+      "url": "https://opensource.guide/how-to-contribute/",
+      "status": 200,
+      "final_url": "https://opensource.guide/how-to-contribute/"
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/",
+      "status": 200,
+      "final_url": "https://opentelemetry.io/docs/concepts/"
+    },
+    {
+      "url": "https://owasp.org/www-community/Threat_Modeling",
+      "status": 200,
+      "final_url": "https://owasp.org/www-community/Threat_Modeling"
+    },
+    {
+      "url": "https://owasp.org/www-project-api-security/",
+      "status": 200,
+      "final_url": "https://owasp.org/www-project-api-security/"
+    },
+    {
+      "url": "https://redis.io/docs/latest/",
+      "status": 200,
+      "final_url": "https://redis.io/docs/latest/"
+    },
+    {
+      "url": "https://roadmap.sh/",
+      "status": 200,
+      "final_url": "https://roadmap.sh/"
+    },
+    {
+      "url": "https://roadmap.sh/ai-engineer",
+      "status": 200,
+      "final_url": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "url": "https://roadmap.sh/backend",
+      "status": 200,
+      "final_url": "https://roadmap.sh/backend"
+    },
+    {
+      "url": "https://roadmap.sh/backend/projects",
+      "status": 200,
+      "final_url": "https://roadmap.sh/backend/projects"
+    },
+    {
+      "url": "https://roadmap.sh/datastructures-and-algorithms",
+      "status": 200,
+      "final_url": "https://roadmap.sh/datastructures-and-algorithms"
+    },
+    {
+      "url": "https://roadmap.sh/questions",
+      "status": 200,
+      "final_url": "https://roadmap.sh/questions"
+    },
+    {
+      "url": "https://roadmap.sh/system-design",
+      "status": 200,
+      "final_url": "https://roadmap.sh/system-design"
+    },
+    {
+      "url": "https://sre.google/sre-book/table-of-contents/",
+      "status": 200,
+      "final_url": "https://sre.google/sre-book/table-of-contents/"
+    },
+    {
+      "url": "https://sre.google/workbook/table-of-contents/",
+      "status": 200,
+      "final_url": "https://sre.google/workbook/table-of-contents/"
+    },
+    {
+      "url": "https://supabase.com/docs/guides/ai/vector-columns",
+      "status": 200,
+      "final_url": "https://supabase.com/docs/guides/ai/vector-columns"
+    },
+    {
+      "url": "https://supabase.com/docs/guides/auth/architecture",
+      "status": 200,
+      "final_url": "https://supabase.com/docs/guides/auth/architecture"
+    },
+    {
+      "url": "https://supabase.com/docs/guides/database/postgres/row-level-security",
+      "status": 200,
+      "final_url": "https://supabase.com/docs/guides/database/postgres/row-level-security"
+    },
+    {
+      "url": "https://supabase.com/docs/guides/deployment/database-migrations",
+      "status": 200,
+      "final_url": "https://supabase.com/docs/guides/deployment/database-migrations"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/backup.html",
+      "status": 200,
+      "final_url": "https://www.postgresql.org/docs/current/backup.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/monitoring.html",
+      "status": 200,
+      "final_url": "https://www.postgresql.org/docs/current/monitoring.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/mvcc.html",
+      "status": 200,
+      "final_url": "https://www.postgresql.org/docs/current/mvcc.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/tutorial.html",
+      "status": 200,
+      "final_url": "https://www.postgresql.org/docs/current/tutorial.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/using-explain.html",
+      "status": 200,
+      "final_url": "https://www.postgresql.org/docs/current/using-explain.html"
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "status": 200,
+      "final_url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+    }
+  ]
+}
